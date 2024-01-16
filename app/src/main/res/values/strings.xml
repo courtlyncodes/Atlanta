@@ -1,3 +1,99 @@
 <resources>
     <string name="app_name">Atlanta</string>
+
+    <!--  Categories  -->
+    <string name="coffee">Coffee</string>
+    <string name="dog_park">Dog Parks</string>
+    <string name="museum">Museums</string>
+    <string name="pizza">Pizza Restaurants</string>
+    <string name="shopping">Shopping Centers</string>
+
+    <!--  Coffee Recommendations  -->
+    <string name="cafe_comma">Café Comma</string>
+    <string name="cafe_comma_detail">Escape the city buzz in Vinings\' charming Cafe Comma, where sun-drenched patios, fresh-baked bites, and expertly crafted coffee fuel conversations and creativity. Soak in the warm atmosphere, savor local flavors, and let the caffeine kickstart your next adventure.</string>
+
+    <string name="the_daily">The Daily Atlanta</string>
+    <string name="the_daily_detail">Skip the generic chains and immerse yourself in Atlanta\'s coffee haven, The Daily. Onyx-roasted perfection awaits under airy skylights or on inviting patios, alongside seasonal delights that tantalize your palate. Fuel your day\'s hustle or discover blissful serenity in this vibrant space championing quality and community.</string>
+
+    <string name="chrome_yellow">Chrome Yellow</string>
+    <string name="chrome_yellow_detail">Inman Park\'s vibrant Chrome Yellow beckons. Sunlight streams through greenery, illuminating expertly roasted beans and handcrafted brews. Savor local bites and connect with friendly faces in this industrial-chic haven. Chrome Yellow isn\'t just caffeine, it\'s a hub for inspiration and community in the heart of Inman Park.</string>
+
+    <string name="con_leche">Con Leche</string>
+    <string name="con_leche_detail">Escape the ordinary in Reynoldstown and Grant Park at Con Leche. Locally sourced beans whisper warm aromas through cozy spaces, where expertly crafted coffee meets delicious empanadas and pastries. Find your quiet corner or join the buzz, fueled by caffeine and community in this intimate, sun-drenched haven. Con Leche invites you to savor flavor, connection, and Atlanta\'s authentic charm.</string>
+
+    <string name="perc">PERC</string>
+    <string name="perc_detail">Get your Atlanta buzz at PERC Virginia-Highland or East Lake. Immerse yourself in the vibrant heart of the neighborhood, where expertly roasted beans and handcrafted brews ignite conversations and creativity. Savor a latte on the sun-drenched patio, grab a pastry for on-the-go, and let PERC fuel your next adventure.</string>
+
+    <string name="urban_grind">Urban Grind</string>
+    <string name="urban_grind_detail">Experience the heart of West Midtown at Urban Grind, Atlanta\'s premier Black-owned coffee haven. Inhale the rich aroma of fresh-brewed coffee and handcrafted espresso, a siren song guiding you through the cozy brick walls. Savor local pastries and panini\'s amidst the warmth of community, where conversations flow as freely as the caffeine. Whether catching up with friends, fueling your hustle, or soaking in the vibrant local art scene, Urban Grind is your West Midtown oasis for authentic coffee experiences, genuine connections, and a taste of community spirit.</string>
+
+    <!--  Dog Park Recommendations  -->
+    <string name="fetch">Fetch Bark</string>
+    <string name="fetch_detail">Unleash playful tails and human smiles at Fetch Park, Atlanta\'s premier dog-friendly social hub. Choose your location – Buckhead\'s urban oasis, O4W\'s sun-drenched space, or The Works\' vibrant playground – and watch your furry friend frolic in spacious, fenced-in parks. Socialize with fellow dog lovers on the shaded patios, grab a refreshing drink from the open-air bar (humans only!), and savor the joy of pure canine fun. Fetch Park is more than just a dog park; it's a community where four-legged adventurers and their humans connect, unwind, and create lasting memories. So grab your leash and let the tail wags begin!</string>
+
+    <string name="freedom">Freedom Barkway Dog Park</string>
+    <string name="freedom_detail">Unleash tails and smiles at Freedom Barkway, Old Fourth Ward\'s haven for canine playtime. This sprawling green space offers separate fenced areas for pups of all sizes, ensuring fur-ocious fun and joyful romps. Shade trees provide respite from the sun, while benches invite owners to watch the wagging tales and playful chases unfold. Bring your water bowls and cleanup bags, and join the friendly community of dog lovers in this vibrant patch of Old Fourth Ward green. Let Freedom Barkway be your pup's playground and your own slice of urban tranquility.</string>
+
+
+    <string name="glenlake">Glenlake Dog Park</string>
+    <string name="glenlake_detail">Unleash your pup\'s inner explorer in Decatur\'s Glenlake Dog Park. Nestled within the charming Glenlake Park near Oakhurst, this fenced haven offers spacious freedom for furry friends to frolic and socialize. Mature trees provide shade for sunny days, while wood chips underfoot create a comfortable play surface.</string>
+
+    <string name="piedmont">Piedmont Park</string>
+    <string name="piedmont_detail">Unleash canine joy in Atlanta\'s heart at Piedmont Park Dog Park. Nestled under the Park Drive bridge, this fenced paradise offers three acres of freedom for furry friends to chase squirrels, sniff adventures, and make new buddies. Separate areas for large and small pups ensure safe play for all, while shaded benches and water spigots provide human comfort. Whether you live in Midtown, Virginia-Highland, or beyond, Piedmont Park Dog Park is a convenient oasis for your four-legged explorer. Hike the trails, explore the nearby Piedmont Park Conservancy office, or grab a bite at Park Tavern after playtime - the possibilities for adventure are endless.</string>
+
+    <string name="skyland">Skyland Dog Park</string>
+    <string name="skyland_detail">Unleash playtime in Brookhaven\s Skyland Dog Park, where green expanses and separate enclosures for big and small pups guarantee tail-wagging adventures. Located just off Buford Highway near Clairmont Ave, Skyland offers ample space for zoomies, sniffari expeditions, and furry friend socials. Cool off beneath shaded benches or grab a picnic table and watch the canine antics unfold. Skyland Dog Park welcomes all sizes and playful styles, making it a favorite for Brookhaven pups and their humans. So grab your leash and head to Skyland for a day of pawsitive vibes and endless memories!</string>
+
+        <!--  Museum Recommendations  -->
+    <string name="fernbank">Fernbank</string>
+    <string name="fernbank_detail">Curious about dinosaurs, the human body, and the wonders of nature? Fernbank Museum in Druid Hills is your gateway to discovery. Explore towering dinos, soar through galaxies on a giant screen, and wander through ancient forests in WildWoods. From Georgia\'s ecosystems to captivating cultures, Fernbank ignites your curiosity and fuels lifelong wonder. It's not just a museum; it's an adventure through science, history, and imagination.</string>
+
+    <string name="high_museum_of_art">High Museum of Art</string>
+    <string name="high_museum_of_art_detail">Art lovers rejoice! Atlanta\'s High Museum of Art awaits, a dazzling oasis of creativity across time and continents. Immerse yourself in ancient treasures, European masterpieces, and contemporary marvels. Witness iconic works by Van Gogh, Monet, and Picasso, then lose yourself in interactive exhibits and captivating lectures. More than just a museum, the High is a vibrant community, a feast for the eyes, and a journey to ignite lifelong wonder. So, step into this artistic wonderland and let your imagination take flight!</string>
+
+    <string name="mlk">The King Center</string>
+    <string name="mlk_detail">Atlanta\'s The King Center isn\'t just a museum; it\'s a journey through Dr. King\'s legacy, sparking your fight for justice. Walk his birth home steps, feel the weight of history in exhibits, and join workshops that ignite your own commitment. Freedom Park awaits for reflection, while the Center pulsates with a living call to action. Come, be inspired, and find your place in the ongoing struggle for a better world.</string>
+
+    <string name="ncchr">National Center for Civil and Human Rights</string>
+    <string name="ncchr_detail">Atlanta\'s National Center for Civil and Human Rights isn\'t just a museum; it\'s a journey through the triumphs and struggles for equality, igniting your own fight for justice. Here, history crackles in recreated moments of the American Civil Rights Movement, then expands across continents and eras to reveal the ongoing global fight for dignity and equality. Be moved by pivotal moments like Freedom Ride bus confrontations, apartheid battles, and LGBTQ+ rights movements, each story whispering across borders and time. It\'s not just a walk through the past; it's a launchpad for your own activism, with workshops, talks, and concrete ways to get involved. Take solace in the shared humanity of the "Spirit of Humanity" sculpture, then step outside to the Atlanta skyline, a reminder of both progress and work yet to be done. Come, be inspired, and find your place in the ongoing struggle for a better world.</string>
+
+    <string name="trap">Trap Music Museum</string>
+    <string name="trap_detail">Atlanta\'s Trap Music Museum isn\'t a museum; it\'s a neon-lit portal blasting you into the heart of Southern hip-hop. Bass lines throb, graffiti screams, and stories of hustle and ambition crackle through interactive exhibits. Witness the rise of trap from basement studios to global phenomenon, feeling the raw energy of legendary beats as you walk the mixtape streets, each mural a face, each sign a rhythm. Hear the voices of the movement - Gucci Mane\'s flow, T.I.'s grind - in intimate interviews and documentaries. Then, drop your own rhymes in a soundproof booth, join the cypher, and become part of the living legacy that keeps the trap music heart beating. This ain't just a museum, it's your chance to step into the beat.</string>
+
+    <string name="coke">World of Coca-Cola</string>
+    <string name="coke_detail">Atlanta\'s World of Coca-Cola isn\'t just a fizzy museum; it\'s a fizzy adventure across continents and time, swirling you into the heart of a global icon. Sip your way through history, savoring the secret formula\'s mystique in a vaulted chamber, then jet-set around the world through taste bud-tingling exhibitions showcasing diverse Coke flavors from every corner of the globe. From polar bear mascots to pop culture moments, meet the bubbly characters that shaped the brand\'s identity. Unleash your inner inventor at the Beverage Lab, concocting your own fizzy creations, and let loose in the 7D theater, where swirling bubbles transport you to a land of pure refreshment. This isn't just a museum; it's a celebration of the world's most famous beverage, leaving you with a smile as sweet as that last icy sip.</string>
+
+    <!--  Pizza Recommendations  -->
+    <string name="fellinis">Fellini\'s Pizza</string>
+    <string name="fellinis_detail">Atlanta\'s Fellini\'s Pizza isn\'t just a slice of heaven; it\'s a neighborhood portal, whisking you through decades and oven-hot slices. In Ponce de Leon\'s bohemian heart, savor thin-crust classics under twinkling fairy lights, or grab a garlicky Sicilian on the go as Virginia-Highland\'s eclectic energy thrums around you. Buckhead\'s sleek skyscrapers peek over Roswell Road as you devour a meatball masterpiece, while Howell Mill's industrial vibes dance with the aroma of fresh-baked dough. Each bite transports you, a crispy passport to a community woven with laughter, camaraderie, and the irresistible comfort of a perfect slice. So grab a napkin, find your Fellini's, and let the neighborhood flavor your pizza adventure.</string>
+
+    <string name="glide">Glide Pizza</string>
+    <string name="glide_detail">Atlanta\'s Glide Pizza isn\'t just a pizza joint; it\'s a slice of city living, morphing between vibrant neighborhoods like a chameleon on dough. In Old Fourth Ward\'s historic bones, savor a wood-fired Margherita under exposed brick walls, then hop across the BeltLine to Decatur\'s quirky heart, where sunshine spills onto picnic tables laden with pepperoni squares. Each bite takes you on a tour, the crust crackling with the energy of the streets, the toppings mirroring the neighborhood's unique flavor. So snag a slice, find your Glide, and let the city become your condiment - every cheesy, saucy mouthful a taste of Atlanta's ever-shifting soul.</string>
+
+    <string name="juniors">Junior\'s Pizza</string>
+    <string name="juniors_detail">Atlanta\'s Junior\'s Pizza isn\'t just a slice; it\'s a bridge between Hapeville\'s vintage charm and Summerhill\'s vibrant heartbeat. In Hapeville\'s historic heart, savor a New York-style classic under flickering neon signs, the aroma of crust mingling with the rumble of trains and the whispers of aviation history. Cross the tracks into Summerhill\'s bustling scene, grabbing a cheesy Sicilian to go as murals and laughter collide, then settle into a corner booth for a deep dish under twinkling lights, sharing stories with friendly faces. Each bite bridges the gap, blending the grit of one with the joy of the other, a taste of Atlanta\'s evolving tapestry. So grab a napkin, find your Junior\'s, and let the neighborhoods knead your heart with warmth, every melty mouthful a bite of community and connection.</string>
+
+    <string name="nina_and_rafi">Nina &amp; Rafi</string>
+    <string name="nina_and_rafi_detail">Atlanta\'s Nina &amp; Rafi isn\'t just a pizza; it\'s a cozy escape on Atlanta\'s BeltLine, where Detroit-style slabs meet Italian warmth. Nestled beneath the leafy canopy between Inman Park and Old Fourth Ward, find your table on the bustling patio, sunlight dappling through trees as laughter mixes with the aroma of caramelized crust. Inside, brick walls hum with conversation, vintage penny tiles glinting under hanging lights, as you dig into a deep-dish masterpiece oozing gooey cheese and pepperoni. Each bite transports you, a crispy passport to a neighborhood haven where locals linger, catching up over glasses of wine and the city\'s latest tales. So grab a fork, find your cozy corner at Nina &amp; Rafi, and let the BeltLine pulse of the city season your pizza adventure, every savory mouthful a taste of Atlanta's friendly rhythm.</string>
+
+    <string name="varuni_napoli">Varuni Napoli</string>
+    <string name="varuni_napoli_detail">Atlanta\'s Varuni Napoli isn\'t just pizza; it\'s a Neapolitan portal, whisking you to sun-drenched Italian shores in heartbeats. In Morningside\'s leafy embrace, savor wood-fired masterpieces under hanging herbs, the scent of mozzarella mingling with birdsong and laughter. Stroll through Midtown\'s bustling heart, grabbing a Margherita on-the-go as the aroma of blistered crust dances with city energy. At Krog Market, find your haven on the sun-drenched patio, sharing a pie with friends as laughter echoes through the food hall. Each bite transports you, a crispy passport to Italy's soul, with charred crust crackling like seaside pebbles and fresh basil whispering of Mediterranean nights. So grab a napkin, find your Varuni, and let the neighborhood become your condiment - every bubbly, char-kissed mouthful a taste of Atlanta's wanderlust spirit.</string>
+
+    <string name="amalfi">Amalfi Cucina &amp; Mercato</string>
+    <string name="amalfi_detail">Atlanta\'s Amalfi Cucina &amp; Mercato isn\'t just pizza; it\'s a sun-kissed Italian escape, transporting you to cobblestone piazzas in brick-oven bites. In Buckhead\'s sleek skyline embrace, savor Neapolitan classics under twinkling lights, the aroma of char mingling with laughter and upscale chatter. Downtown\'s bustling heartbeat thrums around you as you devour a wood-fired masterpiece on the lively patio, the scent of fresh-baked dough carried on the city breeze. Nestled in Midtown\'s vibrant heart, find your table beneath olive branches, sunlight dappling through windows as you share a plate of burrata and pizza perfection. Each bite whisks you away, a crispy passport to Italy's shores, with blistered crust whispering of Amalfi coast sunsets and fresh mozzarella melting like Mediterranean sunshine. So grab a fork, find your Amalfi, and let the neighborhoods become your dining destination - every flavorful mouthful a taste of Atlanta's wanderlust spirit.</string>
+
+    <string name="antico">Antico Pizza</string>
+    <string name="antico_detail">Antico Pizza</string>
+
+    <string name="double_zero">Double Zero</string>
+    <string name="double_zero_detail">Double Zero</string>
+
+    <!-- Shopping Recommendations -->
+    <string name="atlantic">PERC</string>
+    <string name="lenox">Lenox Square</string>
+    <string name="perimeter">Perimeter Mall</string>
+    <string name="phipps">Phipps Plaza</string>
+    <string name="ponce">Ponce City Market</string>
+
+
 </resources>
