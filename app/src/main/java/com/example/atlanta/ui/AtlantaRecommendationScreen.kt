@@ -27,6 +27,7 @@ import com.example.atlanta.data.local.LocalRecommendationsDataProvider
 import com.example.atlanta.ui.theme.AtlantaTheme
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RecommendationScreen(
     recommendation: Recommendation,
@@ -34,7 +35,9 @@ fun RecommendationScreen(
     modifier: Modifier = Modifier
 ){
     Scaffold (topBar =
-    { TopAppBarRecScreen(recommendation = recommendation) }
+    { CenterAlignedTopAppBar(title = {
+        Text(stringResource(recommendation.categoryName))
+    }) }
     ) {
         Column(modifier = Modifier.padding(it)) {
             RecommendationList(selectedCategory = selectedCategory)
@@ -71,17 +74,6 @@ fun RecommendationCard(
             Text(stringResource(recommendation.name))
         }
     }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun TopAppBarRecScreen(
-    recommendation: Recommendation,
-    modifier: Modifier = Modifier
-) {
-    CenterAlignedTopAppBar(title = {
-        Text(stringResource(recommendation.categoryName))
-    })
 }
 
 @Preview(showBackground = true)
