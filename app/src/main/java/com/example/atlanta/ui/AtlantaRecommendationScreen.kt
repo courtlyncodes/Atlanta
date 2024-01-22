@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Card
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -26,18 +27,18 @@ import com.example.atlanta.data.local.LocalCategoryDataProvider
 import com.example.atlanta.data.local.LocalRecommendationsDataProvider
 import com.example.atlanta.ui.theme.AtlantaTheme
 
-@Composable
-fun HomeScreen(categories: List<Category>) {
-    Scaffold(topBar = {
-        TopAppBar()
-    }
-    ) {
-//        val categoryList = LocalCategoryDataProvider.allCategories
-        Column( modifier = Modifier.padding(it)) {
-            CategoryList(categories = categories)
-        }
-    }
-}
+//@Composable
+//fun HomeScreen(categories: List<Category>) {
+//    Scaffold(topBar = {
+//        TopAppBar()
+//    }
+//    ) {
+////        val categoryList = LocalCategoryDataProvider.allCategories
+//        Column(modifier = Modifier.padding(it)) {
+//            CategoryList(categories = categories)
+//        }
+//    }
+//}
 
 @Composable
 fun RecommendationCard(recommendation: Recommendation, modifier: Modifier = Modifier) {
@@ -66,20 +67,24 @@ fun RecommendationCard(recommendation: Recommendation, modifier: Modifier = Modi
 //}
 //
 @Composable
-fun RecommendationList(recommendations: List<Recommendation>){
+fun RecommendationList(recommendations: List<Recommendation>) { //filter the recommendations by category
+    LazyColumn() {
+        item{
 
+        }
+    }
 //            (categories: List<Category>, modifier: Modifier = Modifier) {
 //    categories.forEach { category ->
 //        CategoryCard(category = category, modifier = Modifier)
 //    }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun RecommendationScreenPreview() {
-    AtlantaTheme {
-        val recommendationList = LocalRecommendationsDataProvider.coffeeRecommendations
-        RecommendationScreen(categories = recommendationList)
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun RecommendationScreenPreview() {
+//    AtlantaTheme {
+//        val recommendationList = LocalRecommendationsDataProvider.coffeeRecommendations
+//        RecommendationScreen(categories = recommendationList)
+//    }
+//}
 

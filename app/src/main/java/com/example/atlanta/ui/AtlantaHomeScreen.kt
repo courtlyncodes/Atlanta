@@ -19,61 +19,100 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.atlanta.data.local.Category
-import com.example.atlanta.data.local.LocalCategoryDataProvider
+import com.example.atlanta.R
 import com.example.atlanta.ui.theme.AtlantaTheme
 
 @Composable
-fun HomeScreen(categories: List<Category>) {
+fun HomeScreen() {
     Scaffold(topBar = {
         TopAppBar()
-    }
-    ) {
-//        val categoryList = LocalCategoryDataProvider.allCategories
-        Column( modifier = Modifier.padding(it)) {
-            CategoryList(categories = categories)
+    }) {
+        Column(modifier = Modifier.padding(it)) {
+            CategoryList()
         }
     }
 }
-
-@Composable
-fun CategoryCard(category: Category, modifier: Modifier = Modifier) {
-    Card(modifier = Modifier.clickable { /*todo*/ }) {
-        Row(modifier = modifier.padding(horizontal = 10.dp, vertical = 10.dp)) {
-            Image(
-                painter = painterResource(category.icon),
-                contentDescription = category.name + " icon",
-                modifier = modifier.size(32.dp)
-            )
-            Spacer(modifier = modifier.width(20.dp))
-            Text(text = category.name)
-        }
-    }
-}
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopAppBar(modifier: Modifier = Modifier) {
-    CenterAlignedTopAppBar(
-        title = {
-            Text(text = "Welcome to Atlanta")
-        }
-    )
+    CenterAlignedTopAppBar(title = {
+        Text(text = "Welcome to Atlanta")
+    })
 }
 
 @Composable
-fun CategoryList(categories: List<Category>, modifier: Modifier = Modifier) {
-            categories.forEach { category ->
-                CategoryCard(category = category, modifier = Modifier)
+fun CategoryList(
+    modifier: Modifier = Modifier
+) {
+    Column {
+        Card(modifier = Modifier.clickable { /*todo*/ }) {
+            Row(modifier = modifier.padding(horizontal = 10.dp, vertical = 10.dp)) {
+                Image(
+                    painter = painterResource(R.drawable.coffee_icon),
+                    contentDescription = "coffee icon",
+                    modifier = modifier.size(32.dp)
+                )
+                Spacer(modifier = modifier.width(20.dp))
+                Text(text = "Coffee Shops")
             }
+        }
+        Card(modifier = Modifier.clickable { /*todo*/ }) {
+            Row(modifier = modifier.padding(horizontal = 10.dp, vertical = 10.dp)) {
+                Image(
+                    painter = painterResource(R.drawable.dog_icon),
+                    contentDescription = "dog icon",
+                    modifier = modifier.size(32.dp)
+                )
+                Spacer(modifier = modifier.width(20.dp))
+                Text(text = "Dog Parks")
+            }
+        }
+        Card(modifier = Modifier.clickable { /*todo*/ }) {
+            Row(modifier = modifier.padding(horizontal = 10.dp, vertical = 10.dp)) {
+                Image(
+                    painter = painterResource(R.drawable.museum_icon),
+                    contentDescription = "museum icon",
+                    modifier = modifier.size(32.dp)
+                )
+                Spacer(modifier = modifier.width(20.dp))
+                Text(text = "Museums")
+            }
+        }
+        Card(modifier = Modifier.clickable { /*todo*/ }) {
+            Row(modifier = modifier.padding(horizontal = 10.dp, vertical = 10.dp)) {
+                Image(
+                    painter = painterResource(R.drawable.pizza_icon),
+                    contentDescription = "Pizza icon",
+                    modifier = modifier.size(32.dp)
+                )
+                Spacer(modifier = modifier.width(20.dp))
+                Text(text = "Pizza Restaurants")
+            }
+        }
+        Card(modifier = Modifier.clickable { /*todo*/ }) {
+            Row(modifier = modifier.padding(horizontal = 10.dp, vertical = 10.dp)) {
+                Image(
+                    painter = painterResource(R.drawable.mall_icon),
+                    contentDescription = "shopping icon",
+                    modifier = modifier.size(32.dp)
+                )
+                Spacer(modifier = modifier.width(20.dp))
+                Text(text = "Shopping Centers")
+            }
+        }
     }
+}
+
 
 @Preview(showBackground = true)
 @Composable
 fun HomeScreenPreview() {
     AtlantaTheme {
-        val categoryList = LocalCategoryDataProvider.allCategories
-        HomeScreen(categories = categoryList)
+        HomeScreen()
     }
+}
+
+enum class CategorySelection(val value: Int) {
+    COFFEE(0), DOG_PARKS(1), MUSEUMS(2), PIZZA(3), SHOPPING_CENTER(4),
 }

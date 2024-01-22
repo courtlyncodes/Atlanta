@@ -7,7 +7,7 @@ import com.example.atlanta.R
 object LocalRecommendationsDataProvider {
 
 
-    val coffeeRecommendations = listOf(
+    val allRecommendations = listOf(
 
         //Coffee
         Recommendation(
@@ -45,12 +45,9 @@ object LocalRecommendationsDataProvider {
             name = R.string.urban_grind,
             description = R.string.urban_grind_detail,
             avatar = R.drawable.coffee_urban_grind
-        )
-    )
+        ),
 
         //Dog Parks
-
-    val dogParkRecommendations = listOf(
         Recommendation(
             category = Category.DogPark,
             name = R.string.fetch,
@@ -80,10 +77,9 @@ object LocalRecommendationsDataProvider {
             name = R.string.skyland,
             description = R.string.skyland_detail,
             avatar = R.drawable.dog_park_skyland_dog_park
-        ))
+        ),
 
         //Museums
-    val museumRecommendations = listOf(
         Recommendation(
             category = Category.Museum,
             name = R.string.mlk,
@@ -113,11 +109,9 @@ object LocalRecommendationsDataProvider {
             name = R.string.high_museum_of_art,
             description = R.string.high_museum_of_art_detail,
             avatar = R.drawable.museum_high_museum_of_art
-        ))
+        ),
 
         //Pizza
-
-    val pizzaRecommendations = listOf(
         Recommendation(
             category = Category.Pizza,
             name = R.string.amalfi,
@@ -165,10 +159,9 @@ object LocalRecommendationsDataProvider {
             name = R.string.varuni_napoli,
             description = R.string.varuni_napoli_detail,
             avatar = R.drawable.pizza_varuni_napoli
-        ))
+        ),
 
         //Shopping
-    val shoppingRecommendations = listOf(
         Recommendation(
             category = Category.ShoppingCenter,
             name = R.string.lenox,
