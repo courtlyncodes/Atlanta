@@ -1,6 +1,7 @@
 package com.example.atlanta.ui
 
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -17,15 +18,30 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.atlanta.R
+import com.example.atlanta.data.Category
+import com.example.atlanta.data.local.LocalRecommendationsDataProvider
 import com.example.atlanta.ui.theme.AtlantaTheme
 
+enum class AtlantaScreen(@StringRes val title: Int){
+    Home(title = R.string.app_name),
+    Coffee(title = R.string.coffee),
+    DogPark(title = R.string.dog_park),
+    Museum(title = R.string.museum),
+    Pizza(title = R.string.pizza),
+    ShoppingCenter(title = R.string.shopping)
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    modifier: Modifier = Modifier
+) {
     Scaffold(topBar = {
-        TopAppBar()
+        CenterAlignedTopAppBar(title = { Text(stringResource(R.string.app_name)) })
     }) {
         Column(modifier = Modifier.padding(it)) {
             CategoryList()
@@ -33,20 +49,14 @@ fun HomeScreen() {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun TopAppBar(modifier: Modifier = Modifier) {
-    CenterAlignedTopAppBar(title = {
-        Text(text = "Welcome to Atlanta")
-    })
-}
-
 @Composable
 fun CategoryList(
     modifier: Modifier = Modifier
 ) {
     Column {
-        Card(modifier = Modifier.clickable { /*todo*/ }) {
+        val recommendations = LocalRecommendationsDataProvider.allRecommendations.filter { it.category == Category.Coffee }
+        val recommendation = recommendations.first()
+        Card(modifier = Modifier.clickable { }) {
             Row(modifier = modifier.padding(horizontal = 10.dp, vertical = 10.dp)) {
                 Image(
                     painter = painterResource(R.drawable.coffee_icon),
