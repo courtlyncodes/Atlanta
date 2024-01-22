@@ -18,6 +18,11 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.MutableIntState
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -29,35 +34,36 @@ import com.example.atlanta.data.Category
 import com.example.atlanta.data.local.LocalRecommendationsDataProvider
 import com.example.atlanta.ui.theme.AtlantaTheme
 
-enum class AtlantaScreen(@StringRes val title: Int) {
-    Home(title = R.string.app_name), Coffee(title = R.string.coffee), DogPark(title = R.string.dog_park), Museum(title = R.string.museum), Pizza(title = R.string.pizza), ShoppingCenter(title = R.string.shopping)
-}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier
 ) {
+    val selectedCategory = rememberSaveable { mutableStateOf(Category.COFFEE) }
+
     Scaffold(topBar = {
         CenterAlignedTopAppBar(
-            colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Black, titleContentColor = Color.Red),
+            colors = TopAppBarDefaults.topAppBarColors(
+                containerColor = Color.Black,
+                titleContentColor = Color.Red
+            ),
             title = { Text(stringResource(R.string.app_name)) })
     }) {
         Column(modifier = Modifier.padding(it)) {
-            CategoryList()
+            CategoryList(selectedCategory = selectedCategory)
         }
     }
 }
 
 @Composable
 fun CategoryList(
+//    selectedCategory: Category,
     modifier: Modifier = Modifier
 ) {
+    var selectedCategory = rememberSaveable { mutableStateOf(Category.COFFEE) }
     Column {
-        val recommendations =
-            LocalRecommendationsDataProvider.allRecommendations.filter { it.category == Category.Coffee }
-        val recommendation = recommendations.first()
-        Card(modifier = Modifier.clickable { }) {
+        Card(modifier = Modifier.clickable { selectedCategory = Category.Coffee }) {
             Row(modifier = modifier.padding(horizontal = 10.dp, vertical = 10.dp)) {
                 Image(
                     painter = painterResource(R.drawable.coffee_icon),
@@ -68,7 +74,7 @@ fun CategoryList(
                 Text(text = "Coffee Shops")
             }
         }
-        Card(modifier = Modifier.clickable { /*todo*/ }) {
+        Card(modifier = Modifier.clickable {  }) {
             Row(modifier = modifier.padding(horizontal = 10.dp, vertical = 10.dp)) {
                 Image(
                     painter = painterResource(R.drawable.dog_icon),
@@ -79,7 +85,7 @@ fun CategoryList(
                 Text(text = "Dog Parks")
             }
         }
-        Card(modifier = Modifier.clickable { /*todo*/ }) {
+        Card(modifier = Modifier.clickable {  }) {
             Row(modifier = modifier.padding(horizontal = 10.dp, vertical = 10.dp)) {
                 Image(
                     painter = painterResource(R.drawable.museum_icon),
@@ -90,7 +96,7 @@ fun CategoryList(
                 Text(text = "Museums")
             }
         }
-        Card(modifier = Modifier.clickable { /*todo*/ }) {
+        Card(modifier = Modifier.clickable {  }) {
             Row(modifier = modifier.padding(horizontal = 10.dp, vertical = 10.dp)) {
                 Image(
                     painter = painterResource(R.drawable.pizza_icon),
@@ -101,7 +107,7 @@ fun CategoryList(
                 Text(text = "Pizza Restaurants")
             }
         }
-        Card(modifier = Modifier.clickable { /*todo*/ }) {
+        Card(modifier = Modifier.clickable {  }) {
             Row(modifier = modifier.padding(horizontal = 10.dp, vertical = 10.dp)) {
                 Image(
                     painter = painterResource(R.drawable.mall_icon),
@@ -115,6 +121,15 @@ fun CategoryList(
     }
 }
 
+
+enum class ScreenCategories(val index: Int) {
+    HOME(0),
+    COFFEE(1),
+    DOG_PARK(2),
+    MUSEUM(3),
+    PIZZA(4),
+    SHOPPING_CENTER(5)
+}
 
 @Preview(showBackground = true)
 @Composable

@@ -30,13 +30,12 @@ import com.example.atlanta.ui.theme.AtlantaTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RecommendationScreen(
-    recommendation: Recommendation,
     selectedCategory: Category,
     modifier: Modifier = Modifier
 ){
     Scaffold (topBar =
     { CenterAlignedTopAppBar(title = {
-        Text(stringResource(recommendation.categoryName))
+        Text(stringResource(LocalRecommendationsDataProvider.allRecommendations.filter { it.category == selectedCategory }.first().categoryName))
     }) }
     ) {
         Column(modifier = Modifier.padding(it)) {
@@ -83,7 +82,7 @@ fun RecommendationScreenPreview() {
         val selectedCategory = Category.Coffee
         val recommendations = LocalRecommendationsDataProvider.allRecommendations.filter { it.category == selectedCategory }
         val recommendation = recommendations.first()
-        RecommendationScreen(recommendation = recommendation, selectedCategory = selectedCategory)
+        RecommendationScreen(selectedCategory = selectedCategory)
     }
 }
 
