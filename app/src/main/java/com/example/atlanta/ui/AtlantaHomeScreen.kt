@@ -34,7 +34,8 @@ import com.example.atlanta.ui.theme.AtlantaTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    navController: NavHostController,
+    onClick: (Category) -> Unit,
+//    navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
     Scaffold(topBar = {
@@ -46,21 +47,23 @@ fun HomeScreen(
             title = { Text(stringResource(R.string.app_name)) })
     }) {
         Column(modifier = Modifier.padding(it)) {
-            CategoryList(navController = navController, selectedCategory = Category.COFFEE)
+            CategoryList(onClick = onClick /*navController = navController, selectedCategory = Category.COFFEE*/)
         }
     }
 }
 
 @Composable
 fun CategoryList(
-    selectedCategory: MutableState<Category>,
-    navController: NavHostController,
+    onClick: (Category) -> Unit,
+//    selectedCategory: Category,
+//    navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
     Column {
         Card(modifier = Modifier.clickable {
+            onClick(Category.COFFEE)
 //            selectedCategory.value = Category.COFFEE
-            navController.navigate(AtlantaScreen.COFFEE.name)
+//            navController.navigate(AtlantaScreen.COFFEE.name
         }) {
             Row(modifier = modifier.padding(horizontal = 10.dp, vertical = 10.dp)) {
                 Image(
@@ -73,8 +76,9 @@ fun CategoryList(
             }
         }
         Card(modifier = Modifier.clickable {
+            onClick(Category.DOG_PARK)
 //            selectedCategory.value = Category.DOG_PARK
-            navController.navigate(AtlantaScreen.DOG_PARK.name)
+//            navController.navigate(AtlantaScreen.DOG_PARK.name)
         }) {
             Row(modifier = modifier.padding(horizontal = 10.dp, vertical = 10.dp)) {
                 Image(
@@ -87,8 +91,9 @@ fun CategoryList(
             }
         }
         Card(modifier = Modifier.clickable {
+            onClick(Category.MUSEUM)
 //            selectedCategory.value = Category.MUSEUM
-            navController.navigate(AtlantaScreen.MUSEUM.name)
+//            navController.navigate(AtlantaScreen.MUSEUM.name)
         }) {
             Row(modifier = modifier.padding(horizontal = 10.dp, vertical = 10.dp)) {
                 Image(
@@ -101,8 +106,9 @@ fun CategoryList(
             }
         }
         Card(modifier = Modifier.clickable {
+            onClick(Category.PIZZA)
 //            selectedCategory.value = Category.PIZZA
-            navController.navigate(AtlantaScreen.PIZZA.name)
+//            navController.navigate(AtlantaScreen.PIZZA.name)
         }) {
             Row(modifier = modifier.padding(horizontal = 10.dp, vertical = 10.dp)) {
                 Image(
@@ -115,8 +121,9 @@ fun CategoryList(
             }
         }
         Card(modifier = Modifier.clickable {
+            onClick(Category.SHOPPING_CENTER)
 //            selectedCategory.value = Category.SHOPPING_CENTER
-            navController.navigate(AtlantaScreen.SHOPPING_CENTER.name)
+//            navController.navigate(AtlantaScreen.SHOPPING_CENTER.name)
         }) {
             Row(modifier = modifier.padding(horizontal = 10.dp, vertical = 10.dp)) {
                 Image(
@@ -145,7 +152,8 @@ fun CategoryList(
 @Composable
 fun HomeScreenPreview() {
     AtlantaTheme {
-        val navController = rememberNavController()
-        HomeScreen(navController = navController)
+        val onClick: (Category) -> Unit = {}
+//        val navController = rememberNavController()
+        HomeScreen(onClick = onClick/*navController = navController*/)
     }
 }
