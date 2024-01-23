@@ -8,13 +8,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.compose.rememberNavController
-import com.example.atlanta.data.Category
-import com.example.atlanta.ui.ScreenCategories
+import com.example.atlanta.ui.HomeScreen
 import com.example.atlanta.ui.theme.AtlantaTheme
 
 class MainActivity : ComponentActivity() {
@@ -27,9 +23,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val selectedCategory = rememberSaveable { Category.Coffee }
-                    val navController = rememberNavController()
-                    AtlantaApp(selectedCategory = selectedCategory, navController = navController)
+                    AtlantaApp()
                 }
             }
         }

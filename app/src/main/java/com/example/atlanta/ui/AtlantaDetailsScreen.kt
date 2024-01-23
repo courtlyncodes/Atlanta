@@ -39,9 +39,8 @@ fun DetailsScreen(
 @Composable
 fun DetailsScreenPreview(){
     AtlantaTheme {
-        val selectedCategory = Category.Coffee
-        val recommendations = LocalRecommendationsDataProvider.allRecommendations.filter { it.category == selectedCategory }
-        val recommendation = recommendations.first()
+        val selectedCategory = Category.COFFEE
+        val recommendation = LocalRecommendationsDataProvider.allRecommendations.first() { it.category == selectedCategory }
         DetailsScreen(recommendation = recommendation)
     }
 }

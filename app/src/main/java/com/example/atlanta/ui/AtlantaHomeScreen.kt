@@ -1,7 +1,6 @@
 package com.example.atlanta.ui
 
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -15,33 +14,29 @@ import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.MutableIntState
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.example.atlanta.AtlantaScreen
 import com.example.atlanta.R
 import com.example.atlanta.data.Category
-import com.example.atlanta.data.local.LocalRecommendationsDataProvider
 import com.example.atlanta.ui.theme.AtlantaTheme
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
+    navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
-    val selectedCategory = rememberSaveable { mutableStateOf(Category.COFFEE) }
-
     Scaffold(topBar = {
         CenterAlignedTopAppBar(
             colors = TopAppBarDefaults.topAppBarColors(
@@ -51,19 +46,22 @@ fun HomeScreen(
             title = { Text(stringResource(R.string.app_name)) })
     }) {
         Column(modifier = Modifier.padding(it)) {
-            CategoryList(selectedCategory = selectedCategory)
+            CategoryList(navController = navController, selectedCategory = Category.COFFEE)
         }
     }
 }
 
 @Composable
 fun CategoryList(
-//    selectedCategory: Category,
+    selectedCategory: MutableState<Category>,
+    navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
-    var selectedCategory = rememberSaveable { mutableStateOf(Category.COFFEE) }
     Column {
-        Card(modifier = Modifier.clickable { selectedCategory = Category.Coffee }) {
+        Card(modifier = Modifier.clickable {
+//            selectedCategory.value = Category.COFFEE
+            navController.navigate(AtlantaScreen.COFFEE.name)
+        }) {
             Row(modifier = modifier.padding(horizontal = 10.dp, vertical = 10.dp)) {
                 Image(
                     painter = painterResource(R.drawable.coffee_icon),
@@ -74,7 +72,10 @@ fun CategoryList(
                 Text(text = "Coffee Shops")
             }
         }
-        Card(modifier = Modifier.clickable {  }) {
+        Card(modifier = Modifier.clickable {
+//            selectedCategory.value = Category.DOG_PARK
+            navController.navigate(AtlantaScreen.DOG_PARK.name)
+        }) {
             Row(modifier = modifier.padding(horizontal = 10.dp, vertical = 10.dp)) {
                 Image(
                     painter = painterResource(R.drawable.dog_icon),
@@ -85,7 +86,10 @@ fun CategoryList(
                 Text(text = "Dog Parks")
             }
         }
-        Card(modifier = Modifier.clickable {  }) {
+        Card(modifier = Modifier.clickable {
+//            selectedCategory.value = Category.MUSEUM
+            navController.navigate(AtlantaScreen.MUSEUM.name)
+        }) {
             Row(modifier = modifier.padding(horizontal = 10.dp, vertical = 10.dp)) {
                 Image(
                     painter = painterResource(R.drawable.museum_icon),
@@ -96,7 +100,10 @@ fun CategoryList(
                 Text(text = "Museums")
             }
         }
-        Card(modifier = Modifier.clickable {  }) {
+        Card(modifier = Modifier.clickable {
+//            selectedCategory.value = Category.PIZZA
+            navController.navigate(AtlantaScreen.PIZZA.name)
+        }) {
             Row(modifier = modifier.padding(horizontal = 10.dp, vertical = 10.dp)) {
                 Image(
                     painter = painterResource(R.drawable.pizza_icon),
@@ -107,7 +114,10 @@ fun CategoryList(
                 Text(text = "Pizza Restaurants")
             }
         }
-        Card(modifier = Modifier.clickable {  }) {
+        Card(modifier = Modifier.clickable {
+//            selectedCategory.value = Category.SHOPPING_CENTER
+            navController.navigate(AtlantaScreen.SHOPPING_CENTER.name)
+        }) {
             Row(modifier = modifier.padding(horizontal = 10.dp, vertical = 10.dp)) {
                 Image(
                     painter = painterResource(R.drawable.mall_icon),
@@ -122,19 +132,20 @@ fun CategoryList(
 }
 
 
-enum class ScreenCategories(val index: Int) {
-    HOME(0),
-    COFFEE(1),
-    DOG_PARK(2),
-    MUSEUM(3),
-    PIZZA(4),
-    SHOPPING_CENTER(5)
-}
+//enum class ScreenCategories(val index: Int) {
+//    HOME(0),
+//    COFFEE(1),
+//    DOG_PARK(2),
+//    MUSEUM(3),
+//    PIZZA(4),
+//    SHOPPING_CENTER(5)
+//}
 
 @Preview(showBackground = true)
 @Composable
 fun HomeScreenPreview() {
     AtlantaTheme {
-        HomeScreen()
+        val navController = rememberNavController()
+        HomeScreen(navController = navController)
     }
 }

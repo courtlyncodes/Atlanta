@@ -2,54 +2,54 @@ package com.example.atlanta
 
 import androidx.annotation.StringRes
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableIntState
-import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.atlanta.data.Category
+import com.example.atlanta.data.Recommendation
+import com.example.atlanta.ui.DetailsScreen
 import com.example.atlanta.ui.HomeScreen
 import com.example.atlanta.ui.RecommendationScreen
-import com.example.atlanta.ui.ScreenCategories
 
-//enum class AtlantaScreen(@StringRes val title: Int) {
-//    Home(title = R.string.app_name),
-//    Coffee(title = R.string.coffee),
-//    DogPark(title = R.string.dog_park),
-//    Museum(title = R.string.museum),
-//    Pizza(title = R.string.pizza),
-//    ShoppingCenter(title = R.string.shopping)
-//}
+enum class AtlantaScreen(/*@StringRes val title: Int*/) {
+    HOME/*(title = R.string.app_name)*/,
+    COFFEE/*(title = R.string.coffee)*/,
+    DOG_PARK/*(title = R.string.dog_park)*/,
+    MUSEUM/*(title = R.string.museum)*/,
+    PIZZA/*(title = R.string.pizza)*/,
+    SHOPPING_CENTER/*(title = R.string.shopping)*/,
+    DETAILS
+}
 
 @Composable
 fun AtlantaApp(
-    selectedCategory: Category,
-    navController: NavHostController,
-    modifier: Modifier = Modifier
+    navController: NavHostController = rememberNavController()
 ){
     NavHost(
         navController = navController,
-        startDestination = ScreenCategories.HOME.name,
-        modifier = modifier
+        startDestination = AtlantaScreen.HOME.name
     ) {
-        composable(route = ScreenCategories.HOME.name) {
-            HomeScreen()
+        composable(route = AtlantaScreen.HOME.name) {
+            HomeScreen(navController = navController)
         }
-        composable(route = ScreenCategories.COFFEE.name) {
-           RecommendationScreen(selectedCategory = selectedCategory)
+        composable(route = AtlantaScreen.COFFEE.name) {
+           RecommendationScreen(navController = navController, selectedCategory = Category.COFFEE)
         }
-        composable(route = ScreenCategories.DOG_PARK.name) {
-            RecommendationScreen(selectedCategory = selectedCategory)
+        composable(route = AtlantaScreen.DOG_PARK.name) {
+            RecommendationScreen(navController = navController, selectedCategory = Category.DOG_PARK)
         }
-        composable(route = ScreenCategories.MUSEUM.name) {
-            RecommendationScreen(selectedCategory = selectedCategory)
+        composable(route = AtlantaScreen.MUSEUM.name) {
+            RecommendationScreen(navController = navController, selectedCategory = Category.MUSEUM)
         }
-        composable(route = ScreenCategories.PIZZA.name) {
-            RecommendationScreen(selectedCategory = selectedCategory)
+        composable(route = AtlantaScreen.PIZZA.name) {
+            RecommendationScreen(navController = navController, selectedCategory = Category.PIZZA)
         }
-        composable(route = ScreenCategories.SHOPPING_CENTER.name) {
-            RecommendationScreen(selectedCategory = selectedCategory)
+        composable(route = AtlantaScreen.SHOPPING_CENTER.name) {
+            RecommendationScreen(navController = navController, selectedCategory = Category.SHOPPING_CENTER)
+        }
+        composable(route = AtlantaScreen.DETAILS.name) {
+            DetailsScreen(recommendation = recommendation)
         }
     }
 }
