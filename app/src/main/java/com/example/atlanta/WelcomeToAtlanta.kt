@@ -30,10 +30,17 @@ fun AtlantaApp(
         startDestination = AtlantaScreen.HOME.name
     ) {
         composable(route = AtlantaScreen.HOME.name) {
-            HomeScreen(onClick = {
-                navController.navigate(AtlantaScreen.HOME.name)
-            }
-            /*navController = navController*/)
+            HomeScreen(onClick = { category ->
+                run {
+                    when (category) {
+                        Category.COFFEE -> navController.navigate(AtlantaScreen.COFFEE.name)
+                        Category.DOG_PARK -> navController.navigate(AtlantaScreen.DOG_PARK.name)
+                        Category.MUSEUM -> navController.navigate(AtlantaScreen.MUSEUM.name)
+                        Category.PIZZA -> navController.navigate(AtlantaScreen.PIZZA.name)
+                        Category.SHOPPING_CENTER -> navController.navigate(AtlantaScreen.SHOPPING_CENTER.name)
+                    }
+                }
+            })
         }
         composable(route = AtlantaScreen.COFFEE.name) {
            RecommendationScreen(navController = navController, selectedCategory = Category.COFFEE)
@@ -52,6 +59,5 @@ fun AtlantaApp(
         }
 //        composable(route = AtlantaScreen.DETAILS.name) {
 //            DetailsScreen(recommendation = )
-//        }
+        }
     }
-}

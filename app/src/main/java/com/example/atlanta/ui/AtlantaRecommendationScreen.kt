@@ -91,8 +91,6 @@ fun RecommendationScreenPreview() {
     AtlantaTheme {
         val selectedCategory = Category.COFFEE
         val navController = rememberNavController()
-//        val recommendations = LocalRecommendationsDataProvider.allRecommendations.filter { it.category == selectedCategory }
-//        val recommendation = recommendations.first()
         RecommendationScreen(navController = navController, selectedCategory = selectedCategory)
     }
 }
