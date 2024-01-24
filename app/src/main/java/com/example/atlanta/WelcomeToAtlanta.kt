@@ -6,11 +6,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.atlanta.data.Category
+import com.example.atlanta.data.Recommendation
 import com.example.atlanta.ui.DetailsScreen
 import com.example.atlanta.ui.HomeScreen
 import com.example.atlanta.ui.RecommendationScreen
 
-enum class AtlantaScreen(/*@StringRes val title: Int*/) {
+enum class AtlantaScreen/*(*//*@StringRes val title: Int*//*)*/ {
     HOME/*(title = R.string.app_name)*/,
     COFFEE/*(title = R.string.coffee)*/,
     DOG_PARK/*(title = R.string.dog_park)*/,
@@ -23,7 +24,7 @@ enum class AtlantaScreen(/*@StringRes val title: Int*/) {
 @Composable
 fun AtlantaApp(
     navController: NavHostController = rememberNavController()
-){
+) {
 
     NavHost(
         navController = navController,
@@ -43,21 +44,27 @@ fun AtlantaApp(
             })
         }
         composable(route = AtlantaScreen.COFFEE.name) {
-           RecommendationScreen(navController = navController, selectedCategory = Category.COFFEE)
+            RecommendationScreen(selectedCategory = Category.COFFEE,
+                onClick = { navController.navigate(AtlantaScreen.DETAILS.name) })
         }
         composable(route = AtlantaScreen.DOG_PARK.name) {
-            RecommendationScreen(navController = navController, selectedCategory = Category.DOG_PARK)
+            RecommendationScreen(selectedCategory = Category.DOG_PARK,
+                onClick = { AtlantaScreen.DETAILS.name })
         }
         composable(route = AtlantaScreen.MUSEUM.name) {
-            RecommendationScreen(navController = navController, selectedCategory = Category.MUSEUM)
+            RecommendationScreen(selectedCategory = Category.MUSEUM,
+                onClick = { AtlantaScreen.DETAILS.name })
         }
         composable(route = AtlantaScreen.PIZZA.name) {
-            RecommendationScreen(navController = navController, selectedCategory = Category.PIZZA)
+            RecommendationScreen(selectedCategory = Category.PIZZA,
+                onClick = { AtlantaScreen.DETAILS.name })
         }
         composable(route = AtlantaScreen.SHOPPING_CENTER.name) {
-            RecommendationScreen(navController = navController, selectedCategory = Category.SHOPPING_CENTER)
+            RecommendationScreen(selectedCategory = Category.SHOPPING_CENTER,
+                onClick = { AtlantaScreen.DETAILS.name })
         }
 //        composable(route = AtlantaScreen.DETAILS.name) {
 //            DetailsScreen(recommendation = )
-        }
+//        }
     }
+}

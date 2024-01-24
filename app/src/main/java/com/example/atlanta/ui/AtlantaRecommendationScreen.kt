@@ -17,26 +17,20 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
-import com.example.atlanta.AtlantaScreen
-import com.example.atlanta.data.Recommendation
 import com.example.atlanta.data.Category
+import com.example.atlanta.data.Recommendation
 import com.example.atlanta.data.local.LocalRecommendationsDataProvider
-import com.example.atlanta.ui.theme.AtlantaTheme
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RecommendationScreen(
     selectedCategory: Category,
-    navController: NavHostController,
+    onClick: (Recommendation) -> Unit,
     modifier: Modifier = Modifier
 ){
     Scaffold (topBar =
@@ -45,7 +39,7 @@ fun RecommendationScreen(
     }) }
     ) {
         Column(modifier = Modifier.padding(it)) {
-            RecommendationList(navController = navController, selectedCategory = selectedCategory)
+            RecommendationList(/*navController = navController,*/ selectedCategory = selectedCategory, onClick = onClick)
         }
     }
 
@@ -53,26 +47,27 @@ fun RecommendationScreen(
 @Composable
 fun RecommendationList(
     selectedCategory: Category,
-    navController: NavHostController,
+    onClick: (Recommendation) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val filteredRecommendations =
         LocalRecommendationsDataProvider.allRecommendations.filter { it.category == selectedCategory }
     LazyColumn{
         items(filteredRecommendations) { recommendation ->
-                RecommendationCard(navController = navController, recommendation = recommendation)
+                RecommendationCard(/*navController = navController*/ recommendation = recommendation, onClick = onClick)
         }
     }
 }
 @Composable
 fun RecommendationCard(
     recommendation: Recommendation,
-    navController: NavHostController,
+    onClick: (Recommendation) -> Unit,
     modifier: Modifier = Modifier
 ){
 //    var selectedRecommendation by remember { mutableStateOf(recommendation) }
 
-    Card(modifier = Modifier.clickable { navController.navigate(AtlantaScreen.DETAILS.name) }) {
+    Card(modifier = Modifier.clickable { onClick(recommendation)
+    /*navController.navigate(AtlantaScreen.DETAILS.name)*/ }) {
         Row (modifier = modifier.padding(horizontal = 10.dp, vertical = 10.dp)){
             Image(
                 painter = painterResource(recommendation.avatar),
@@ -85,7 +80,7 @@ fun RecommendationCard(
     }
 }
 
-@Preview(showBackground = true)
+/*@Preview(showBackground = true)
 @Composable
 fun RecommendationScreenPreview() {
     AtlantaTheme {
@@ -93,5 +88,5 @@ fun RecommendationScreenPreview() {
         val navController = rememberNavController()
         RecommendationScreen(navController = navController, selectedCategory = selectedCategory)
     }
-}
+}*/
 
