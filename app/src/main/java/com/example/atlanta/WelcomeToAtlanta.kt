@@ -50,34 +50,32 @@ fun AtlantaApp(
             })
         }
         composable(route = AtlantaScreen.COFFEE.name) {
-            RecommendationScreen(selectedCategory = Category.COFFEE,
+            RecommendationScreen(selectedCategory = Category.COFFEE, viewModel = viewModel,
                 onClick = {
-                    LocalRecommendationsDataProvider.allRecommendations
-                        .find { it.id == recommendation }
                     navController.navigate(AtlantaScreen.DETAILS.name) })
         }
         composable(route = AtlantaScreen.DOG_PARK.name) {
-            RecommendationScreen(selectedCategory = Category.DOG_PARK,
+            RecommendationScreen(selectedCategory = Category.DOG_PARK, viewModel = viewModel,
                 onClick = {
                     navController.navigate(AtlantaScreen.DETAILS.name) })
         }
         composable(route = AtlantaScreen.MUSEUM.name) {
-            RecommendationScreen(selectedCategory = Category.MUSEUM,
+            RecommendationScreen(selectedCategory = Category.MUSEUM, viewModel = viewModel,
                 onClick = {
                     navController.navigate(AtlantaScreen.DETAILS.name) })
         }
         composable(route = AtlantaScreen.PIZZA.name) {
-            RecommendationScreen(selectedCategory = Category.PIZZA,
+            RecommendationScreen(selectedCategory = Category.PIZZA, viewModel = viewModel,
                 onClick = {
                     navController.navigate(AtlantaScreen.DETAILS.name) })
         }
         composable(route = AtlantaScreen.SHOPPING_CENTER.name) {
-            RecommendationScreen(selectedCategory = Category.SHOPPING_CENTER,
+            RecommendationScreen(selectedCategory = Category.SHOPPING_CENTER, viewModel = viewModel,
                 onClick = {
                     navController.navigate(AtlantaScreen.DETAILS.name) })
         }
         composable(route = AtlantaScreen.DETAILS.name) {
-            DetailsScreen(recommendation = uiState)
+            DetailsScreen(recommendation = uiState.currentRecommendation)
         }
     }
 }

@@ -15,31 +15,7 @@ class RecommendationViewModel : ViewModel() {
         1, Category.COFFEE, 0, 0, 0, 0)))
     val uiState: StateFlow<RecommendationUiState> = _uiState.asStateFlow()
 
-//    fun setName(recommendation: Recommendation) {
-//        _uiState.update { currentState ->
-//            currentState.copy(
-//                name = recommendation.name
-//            )
-//        }
-//    }
-//
-//    fun setAvatar(recommendation: Recommendation) {
-//        _uiState.update { currentState ->
-//            currentState.copy(
-//                avatar = recommendation.avatar
-//            )
-//        }
-//    }
-//
-//    fun setDescription(recommendation: Recommendation) {
-//        _uiState.update { currentState ->
-//            currentState.copy(
-//                description =  recommendation.description
-//            )
-//        }
-//    }
-
-    fun setSelectedRecommendation(recommendation: Recommendation) {
+    fun setCurrentRecommendation(recommendation: Recommendation) {
         _uiState.value = _uiState.value.copy(currentRecommendation = recommendation)
     }
 }
