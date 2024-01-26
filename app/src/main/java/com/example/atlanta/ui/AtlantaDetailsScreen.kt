@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -24,8 +23,10 @@ import com.example.atlanta.ui.theme.AtlantaTheme
 fun DetailsScreen(
     recommendation: Recommendation,
     modifier: Modifier = Modifier){
-    val selectedRecommendation by remember { mutableStateOf(recommendation) }
     LazyColumn {
+        item {
+            Text(stringResource(recommendation.name))
+        }
         item {
             Image(
                 painter = painterResource(recommendation.avatar),

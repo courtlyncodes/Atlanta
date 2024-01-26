@@ -11,6 +11,7 @@ object LocalRecommendationsDataProvider {
 
         //Coffee
         Recommendation(
+            id = 1,
             category = Category.COFFEE,
             name = R.string.cafe_comma,
             description = R.string.cafe_comma_description,
@@ -18,6 +19,7 @@ object LocalRecommendationsDataProvider {
             categoryName = R.string.coffee
         ),
         Recommendation(
+            id = 2,
             category = Category.COFFEE,
             name = R.string.chrome_yellow,
             description = R.string.chrome_yellow_description,
@@ -25,6 +27,7 @@ object LocalRecommendationsDataProvider {
             categoryName = R.string.coffee
         ),
         Recommendation(
+            id = 3,
             category = Category.COFFEE,
             name = R.string.con_leche,
             description = R.string.con_leche,
@@ -32,6 +35,7 @@ object LocalRecommendationsDataProvider {
             categoryName = R.string.coffee
         ),
         Recommendation(
+            id = 4,
             category = Category.COFFEE,
             name = R.string.the_daily,
             description = R.string.the_daily_description,
@@ -39,6 +43,7 @@ object LocalRecommendationsDataProvider {
             categoryName = R.string.coffee
         ),
         Recommendation(
+            id = 5,
             category = Category.COFFEE,
             name = R.string.perc,
             description = R.string.perc_description,
@@ -46,6 +51,7 @@ object LocalRecommendationsDataProvider {
             categoryName = R.string.coffee
         ),
         Recommendation(
+            id = 6,
             category = Category.COFFEE,
             name = R.string.urban_grind,
             description = R.string.urban_grind_description,
@@ -55,6 +61,7 @@ object LocalRecommendationsDataProvider {
 
         //Dog Parks
         Recommendation(
+            id = 7,
             category = Category.DOG_PARK,
             name = R.string.fetch,
             description = R.string.fetch_description,
@@ -62,6 +69,7 @@ object LocalRecommendationsDataProvider {
             categoryName = R.string.dog_park
         ),
         Recommendation(
+            id = 8,
             category = Category.DOG_PARK,
             name = R.string.freedom,
             description = R.string.freedom_description,
@@ -69,6 +77,7 @@ object LocalRecommendationsDataProvider {
             categoryName = R.string.dog_park
         ),
         Recommendation(
+            id = 9,
             category = Category.DOG_PARK,
             name = R.string.piedmont,
             description = R.string.piedmont_description,
@@ -76,6 +85,7 @@ object LocalRecommendationsDataProvider {
             categoryName = R.string.dog_park
         ),
         Recommendation(
+            id = 10 ,
             category = Category.DOG_PARK,
             name = R.string.glenlake,
             description = R.string.glenlake_description,
@@ -83,6 +93,7 @@ object LocalRecommendationsDataProvider {
             categoryName = R.string.dog_park
         ),
         Recommendation(
+            id = 11 ,
             category = Category.DOG_PARK,
             name = R.string.skyland,
             description = R.string.skyland_description,
@@ -92,6 +103,7 @@ object LocalRecommendationsDataProvider {
 
         //Museums
         Recommendation(
+            id = 12 ,
             category = Category.MUSEUM,
             name = R.string.mlk,
             description = R.string.mlk_description,
@@ -99,6 +111,7 @@ object LocalRecommendationsDataProvider {
             categoryName = R.string.museum
         ),
         Recommendation(
+            id = 13 ,
             category = Category.MUSEUM,
             name = R.string.ncchr,
             description = R.string.ncchr_description,
@@ -106,6 +119,7 @@ object LocalRecommendationsDataProvider {
             categoryName = R.string.museum
         ),
         Recommendation(
+            id = 14 ,
             category = Category.MUSEUM,
             name = R.string.coke,
             description = R.string.coke_description,
@@ -113,6 +127,7 @@ object LocalRecommendationsDataProvider {
             categoryName = R.string.museum
         ),
         Recommendation(
+            id = 15 ,
             category = Category.MUSEUM,
             name = R.string.trap,
             description = R.string.trap_description,
@@ -120,6 +135,7 @@ object LocalRecommendationsDataProvider {
             categoryName = R.string.museum
         ),
         Recommendation(
+            id = 16 ,
             category = Category.MUSEUM,
             name = R.string.high_museum_of_art,
             description = R.string.high_museum_of_art_description,
@@ -129,6 +145,7 @@ object LocalRecommendationsDataProvider {
 
         //Pizza
         Recommendation(
+            id = 17 ,
             category = Category.PIZZA,
             name = R.string.amalfi,
             description = R.string.amalfi_description,
@@ -136,6 +153,7 @@ object LocalRecommendationsDataProvider {
             categoryName = R.string.pizza
         ),
         Recommendation(
+            id = 18 ,
             category = Category.PIZZA,
             name = R.string.antico,
             description = R.string.antico_description,
@@ -143,6 +161,7 @@ object LocalRecommendationsDataProvider {
             categoryName = R.string.pizza
         ),
         Recommendation(
+            id = 19 ,
             category = Category.PIZZA,
             name = R.string.fellinis,
             description = R.string.fellinis_description,
@@ -150,6 +169,7 @@ object LocalRecommendationsDataProvider {
             categoryName = R.string.pizza
         ),
         Recommendation(
+            id = 20 ,
             category = Category.PIZZA,
             name = R.string.glide,
             description = R.string.glide_description,
@@ -157,6 +177,7 @@ object LocalRecommendationsDataProvider {
             categoryName = R.string.pizza
         ),
         Recommendation(
+            id = 21 ,
             category = Category.PIZZA,
             name = R.string.double_zero,
             description = R.string.double_zero_description,
@@ -164,6 +185,7 @@ object LocalRecommendationsDataProvider {
             categoryName = R.string.pizza
         ),
         Recommendation(
+            id = 22 ,
             category = Category.PIZZA,
             name = R.string.juniors,
             description = R.string.juniors_description,
@@ -171,6 +193,7 @@ object LocalRecommendationsDataProvider {
             categoryName = R.string.pizza
         ),
         Recommendation(
+            id = 23 ,
             category = Category.PIZZA,
             name = R.string.nina_and_rafi,
             description = R.string.nina_and_rafi_description,
@@ -178,6 +201,7 @@ object LocalRecommendationsDataProvider {
             categoryName = R.string.pizza
         ),
         Recommendation(
+            id = 24 ,
             category = Category.PIZZA,
             name = R.string.varuni_napoli,
             description = R.string.varuni_napoli_description,
@@ -187,6 +211,7 @@ object LocalRecommendationsDataProvider {
 
         //Shopping
         Recommendation(
+            id = 25 ,
             category = Category.SHOPPING_CENTER,
             name = R.string.lenox,
             description = R.string.lenox_description,
@@ -194,6 +219,7 @@ object LocalRecommendationsDataProvider {
             categoryName = R.string.shopping
         ),
         Recommendation(
+            id = 26,
             category = Category.SHOPPING_CENTER,
             name = R.string.atlantic,
             description = R.string.atlantic_description,
@@ -201,6 +227,7 @@ object LocalRecommendationsDataProvider {
             categoryName = R.string.shopping
         ),
         Recommendation(
+            id = 27 ,
             category = Category.SHOPPING_CENTER,
             name = R.string.perimeter,
             description = R.string.perimeter_description,
@@ -208,6 +235,7 @@ object LocalRecommendationsDataProvider {
             categoryName = R.string.shopping
         ),
         Recommendation(
+            id = 28 ,
             category = Category.SHOPPING_CENTER,
             name = R.string.phipps,
             description = R.string.phipps_description,
@@ -215,6 +243,7 @@ object LocalRecommendationsDataProvider {
             categoryName = R.string.shopping
         ),
         Recommendation(
+            id = 29 ,
             category = Category.SHOPPING_CENTER,
             name = R.string.ponce,
             description = R.string.ponce_description,

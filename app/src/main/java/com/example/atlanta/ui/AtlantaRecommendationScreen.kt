@@ -17,6 +17,10 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -60,13 +64,14 @@ fun RecommendationList(
 }
 @Composable
 fun RecommendationCard(
+    selectedRecommendation
     recommendation: Recommendation,
-    onClick: (Recommendation) -> Unit,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier
 ){
-//    var selectedRecommendation by remember { mutableStateOf(recommendation) }
+    var  by remember { mutableStateOf(recommendation) }
 
-    Card(modifier = Modifier.clickable { onClick(recommendation)
+    Card(modifier = Modifier.clickable { onClick(selectedRecommendation = recommendation)
     /*navController.navigate(AtlantaScreen.DETAILS.name)*/ }) {
         Row (modifier = modifier.padding(horizontal = 10.dp, vertical = 10.dp)){
             Image(
