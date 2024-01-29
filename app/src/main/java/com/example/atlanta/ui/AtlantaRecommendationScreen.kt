@@ -3,7 +3,6 @@ package com.example.atlanta.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
@@ -17,11 +16,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -32,17 +26,15 @@ import com.example.atlanta.data.local.LocalRecommendationsDataProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RecommendationScreen(
-//    viewModel: RecommendationViewModel,
-    recommendationViewModel: RecommendationViewModel = viewModel(),
+    viewModel: RecommendationViewModel = viewModel(),
     selectedCategory: Category,
-    onClick: (Recommendation) -> Unit,
-    modifier: Modifier = Modifier
+    onClick: (Recommendation?) -> Unit,
+//    modifier: Modifier = Modifier
 ) {
-    val recommendationUiState by recommendationViewModel.uiState.collectAsState()
+
     val filteredRecommendations =
         LocalRecommendationsDataProvider.allRecommendations.filter { it.category == selectedCategory }
     Scaffold(topBar =
@@ -54,26 +46,31 @@ fun RecommendationScreen(
     ) {
         LazyColumn(modifier = Modifier.padding(it)) {
             items(filteredRecommendations) { recommendation ->
-                RecommendationCard( recommendation = recommendation, onClick = onClick)
+                RecommendationCard(
+                    recommendation = recommendation,
+                    onClick = onClick,
+                    viewModel = viewModel
+                )
             }
         }
     }
 }
+
 @Composable
 fun RecommendationCard(
-//    viewModel: RecommendationViewModel,
+    viewModel: RecommendationViewModel,
     recommendation: Recommendation,
-    onClick: (Recommendation) -> Unit,
+    onClick: (Recommendation?) -> Unit,
     modifier: Modifier = Modifier
-){
-//    val viewModel: RecommendationViewModel = viewModel()
-//    val uiState by viewModel.uiState.collectAsState()
+) {
 
     Card(modifier = Modifier.clickable {
+        viewModel.updateRecommendation(recommendation)
         onClick(recommendation)
-         }
+    }
+
     ) {
-        Row (modifier = modifier.padding(horizontal = 10.dp, vertical = 10.dp)){
+        Row(modifier = modifier.padding(horizontal = 10.dp, vertical = 10.dp)) {
             Image(
                 painter = painterResource(recommendation.avatar),
                 contentDescription = stringResource(recommendation.name),
@@ -84,14 +81,3 @@ fun RecommendationCard(
         }
     }
 }
-
-/*@Preview(showBackground = true)
-@Composable
-fun RecommendationScreenPreview() {
-    AtlantaTheme {
-        val selectedCategory = Category.COFFEE
-        val navController = rememberNavController()
-        RecommendationScreen(navController = navController, selectedCategory = selectedCategory)
-    }
-}*/
-

@@ -51,8 +51,6 @@ fun HomeScreen(
 @Composable
 fun CategoryList(
     onClick: (Category) -> Unit,
-//    selectedCategory: Category,
-//    navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
     Column {

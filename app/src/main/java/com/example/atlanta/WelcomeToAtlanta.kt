@@ -3,18 +3,16 @@ package com.example.atlanta
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.atlanta.data.Category
-import com.example.atlanta.data.Recommendation
 import com.example.atlanta.ui.DetailsScreen
 import com.example.atlanta.ui.HomeScreen
 import com.example.atlanta.ui.RecommendationScreen
 import com.example.atlanta.ui.RecommendationViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.atlanta.data.local.LocalRecommendationsDataProvider
 
 enum class AtlantaScreen/*(*//*@StringRes val title: Int*//*)*/ {
     HOME/*(title = R.string.app_name)*/,
@@ -31,7 +29,6 @@ fun AtlantaApp(
     viewModel: RecommendationViewModel = viewModel(),
     navController: NavHostController = rememberNavController()
 ) {
-    val uiState by viewModel.uiState.collectAsState()
     NavHost(
         navController = navController,
         startDestination = AtlantaScreen.HOME.name
@@ -50,32 +47,53 @@ fun AtlantaApp(
             })
         }
         composable(route = AtlantaScreen.COFFEE.name) {
-            RecommendationScreen(selectedCategory = Category.COFFEE, viewModel = viewModel,
+            RecommendationScreen(selectedCategory = Category.COFFEE,
                 onClick = {
-                    navController.navigate(AtlantaScreen.DETAILS.name) })
+                    if (it != null) {
+                        viewModel.updateRecommendation(it)
+                    }
+                    navController.navigate(AtlantaScreen.DETAILS.name)
+                })
         }
         composable(route = AtlantaScreen.DOG_PARK.name) {
-            RecommendationScreen(selectedCategory = Category.DOG_PARK, viewModel = viewModel,
+            RecommendationScreen(selectedCategory = Category.DOG_PARK,
                 onClick = {
-                    navController.navigate(AtlantaScreen.DETAILS.name) })
+                    if (it != null) {
+                        viewModel.updateRecommendation(it)
+                    }
+                    navController.navigate(AtlantaScreen.DETAILS.name)
+                })
         }
         composable(route = AtlantaScreen.MUSEUM.name) {
-            RecommendationScreen(selectedCategory = Category.MUSEUM, viewModel = viewModel,
+            RecommendationScreen(selectedCategory = Category.MUSEUM,
                 onClick = {
-                    navController.navigate(AtlantaScreen.DETAILS.name) })
+                    if (it != null) {
+                        viewModel.updateRecommendation(it)
+                    }
+                    navController.navigate(AtlantaScreen.DETAILS.name)
+                })
         }
         composable(route = AtlantaScreen.PIZZA.name) {
-            RecommendationScreen(selectedCategory = Category.PIZZA, viewModel = viewModel,
+            RecommendationScreen(selectedCategory = Category.PIZZA,
                 onClick = {
-                    navController.navigate(AtlantaScreen.DETAILS.name) })
+                    if (it != null) {
+                        viewModel.updateRecommendation(it)
+                    }
+                    navController.navigate(AtlantaScreen.DETAILS.name)
+                })
         }
         composable(route = AtlantaScreen.SHOPPING_CENTER.name) {
-            RecommendationScreen(selectedCategory = Category.SHOPPING_CENTER, viewModel = viewModel,
+            RecommendationScreen(selectedCategory = Category.SHOPPING_CENTER,
                 onClick = {
-                    navController.navigate(AtlantaScreen.DETAILS.name) })
+                    if (it != null) {
+                        viewModel.updateRecommendation(it)
+                    }
+                    navController.navigate(AtlantaScreen.DETAILS.name)
+                })
         }
         composable(route = AtlantaScreen.DETAILS.name) {
-            DetailsScreen(recommendation = uiState.currentRecommendation)
+            val selectedRecommendation by viewModel.recommendationViewModel.collectAsState()
+            DetailsScreen(recommendation = selectedRecommendation)
         }
     }
 }
