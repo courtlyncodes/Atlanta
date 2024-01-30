@@ -30,7 +30,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 @Composable
 fun RecommendationScreen(
     viewModel: RecommendationViewModel = viewModel(),
-
     selectedCategory: Category,
     onClick: (Recommendation?) -> Unit,
 //    modifier: Modifier = Modifier
@@ -38,14 +37,14 @@ fun RecommendationScreen(
 
     val filteredRecommendations =
         LocalRecommendationsDataProvider.allRecommendations.filter { it.category == selectedCategory }
-    Scaffold(topBar =
-    {
-        CenterAlignedTopAppBar(title = {
-            Text(stringResource(LocalRecommendationsDataProvider.allRecommendations.first { it.category == selectedCategory }.categoryName))
-        })
-    }
-    ) {
-        LazyColumn(modifier = Modifier.padding(it)) {
+//    Scaffold(topBar =
+//    {
+//        CenterAlignedTopAppBar(title = {
+//            Text(stringResource(LocalRecommendationsDataProvider.allRecommendations.first { it.category == selectedCategory }.categoryName))
+//        })
+//    }
+//    ) {
+        LazyColumn(/*modifier = Modifier.padding(it)*/) {
             items(filteredRecommendations) { recommendation ->
                 RecommendationCard(
                     recommendation = recommendation,
@@ -56,7 +55,7 @@ fun RecommendationScreen(
             }
         }
     }
-}
+//}
 
 @Composable
 fun RecommendationCard(

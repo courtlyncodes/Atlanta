@@ -33,19 +33,19 @@ fun HomeScreen(
     onClick: (Category) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Scaffold(topBar = {
-        CenterAlignedTopAppBar(
-            colors = TopAppBarDefaults.topAppBarColors(
-                containerColor = Color.Black,
-                titleContentColor = Color.Red
-            ),
-            title = { Text(stringResource(R.string.app_name)) })
-    }) {
-        Column(modifier = Modifier.padding(it)) {
+//    Scaffold(topBar = {
+//        CenterAlignedTopAppBar(
+//            colors = TopAppBarDefaults.topAppBarColors(
+//                containerColor = Color.Black,
+//                titleContentColor = Color.Red
+//            ),
+//            title = { Text(stringResource(R.string.app_name)) })
+//    }) {
+        Column(/*modifier = Modifier.padding(it)*/) {
             CategoryList(onClick = onClick /*navController = navController, selectedCategory = Category.COFFEE*/)
         }
     }
-}
+//}
 
 @Composable
 fun CategoryList(
