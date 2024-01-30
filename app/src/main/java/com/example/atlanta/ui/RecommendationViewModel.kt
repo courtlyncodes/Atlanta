@@ -8,10 +8,13 @@ import kotlinx.coroutines.flow.asStateFlow
 
 
 class RecommendationViewModel : ViewModel() {
-    private val _recommendationViewModel = MutableStateFlow<Recommendation?>(null)
-    val recommendationViewModel: StateFlow<Recommendation?> = _recommendationViewModel.asStateFlow()
-
+    private val _recommendation = MutableStateFlow<Recommendation?>(null)
+    val recommendation: StateFlow<Recommendation?> = _recommendation.asStateFlow()
+//init block after declaring variable
+//    init {
+//
+//    }
     fun updateRecommendation(selectedRecommendation: Recommendation) {
-        _recommendationViewModel.value = selectedRecommendation
+        _recommendation.value = selectedRecommendation
     }
 }

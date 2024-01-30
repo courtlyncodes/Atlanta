@@ -30,6 +30,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 @Composable
 fun RecommendationScreen(
     viewModel: RecommendationViewModel = viewModel(),
+
     selectedCategory: Category,
     onClick: (Recommendation?) -> Unit,
 //    modifier: Modifier = Modifier
@@ -49,7 +50,8 @@ fun RecommendationScreen(
                 RecommendationCard(
                     recommendation = recommendation,
                     onClick = onClick,
-                    viewModel = viewModel
+//                    viewModel = viewModel
+                    onViewModelClick = { viewModel.updateRecommendation(recommendation) }
                 )
             }
         }
@@ -58,14 +60,16 @@ fun RecommendationScreen(
 
 @Composable
 fun RecommendationCard(
-    viewModel: RecommendationViewModel,
+//    viewModel: RecommendationViewModel,
+    onViewModelClick: (Recommendation?) -> Unit,
     recommendation: Recommendation,
     onClick: (Recommendation?) -> Unit,
     modifier: Modifier = Modifier
 ) {
 
     Card(modifier = Modifier.clickable {
-        viewModel.updateRecommendation(recommendation)
+//        viewModel.updateRecommendation(recommendation)
+        onViewModelClick(recommendation)
         onClick(recommendation)
     }
 

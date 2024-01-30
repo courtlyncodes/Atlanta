@@ -31,7 +31,6 @@ import com.example.atlanta.ui.theme.AtlantaTheme
 @Composable
 fun HomeScreen(
     onClick: (Category) -> Unit,
-//    navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
     Scaffold(topBar = {

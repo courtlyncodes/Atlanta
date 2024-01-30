@@ -92,7 +92,7 @@ fun AtlantaApp(
                 })
         }
         composable(route = AtlantaScreen.DETAILS.name) {
-            val selectedRecommendation by viewModel.recommendationViewModel.collectAsState()
+            val selectedRecommendation by viewModel.recommendation.collectAsState()
             DetailsScreen(recommendation = selectedRecommendation)
         }
     }
