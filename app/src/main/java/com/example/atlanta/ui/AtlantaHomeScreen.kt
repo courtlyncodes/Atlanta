@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
+import androidx.compose.material3.SheetValue
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
@@ -122,13 +123,12 @@ fun HomeAndRecommendationView(
 @Composable
 fun HomeScreen(
     windowSize: WindowWidthSizeClass,
-    contentType: AtlantaContentType,
     onClick: (Category) -> Unit,
     selectedCategory: Category,
     onCardClick: (Recommendation?) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    if(contentType == AtlantaContentType.ListAndDetail)
+    if(windowSize == WindowWidthSizeClass.Expanded)
     {
         HomeAndRecommendationView(
             windowSize = windowSize,

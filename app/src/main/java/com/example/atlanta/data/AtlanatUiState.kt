@@ -6,6 +6,7 @@ data class AtlantaUiState(
 //    val name: Int = 0,
 //    val avatar: Int = 0,
 //    val description: Int = 0,
-    val category: Category,
-    val recommendations: List<Recommendation> = LocalRecommendationsDataProvider.allRecommendations.filter { it.category == category }
+    val category: Category = Category.COFFEE,
+    val recommendation: Recommendation = LocalRecommendationsDataProvider.allRecommendations.first { it.category == category },
+    val recommendations: List<Recommendation> = listOf()
 )

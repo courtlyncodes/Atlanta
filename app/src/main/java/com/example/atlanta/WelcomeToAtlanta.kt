@@ -34,7 +34,7 @@ fun AtlantaApp(
     viewModel: AtlantaViewModel = viewModel(),
     navController: NavHostController = rememberNavController()
 ) {
-    val contentType: AtlantaContentType = when(windowSize){
+    when(windowSize){
         WindowWidthSizeClass.Compact -> { AtlantaContentType.ListOnly }
         WindowWidthSizeClass.Expanded -> { AtlantaContentType.ListAndDetail }
         else -> { AtlantaContentType.ListOnly }
@@ -43,7 +43,6 @@ fun AtlantaApp(
 
     HomeScreen(
         windowSize = windowSize,
-        contentType = contentType,
         onClick = { viewModel.updateCategory(it) },
         selectedCategory = uiState.category,
         onCardClick = {
@@ -116,8 +115,7 @@ fun AtlantaApp(
                 })
         }
         composable(route = AtlantaScreen.DETAILS.name) {
-            val selectedRecommendation by viewModel.recommendation.collectAsState()
-            DetailsScreen(recommendation = selectedRecommendation)
+            DetailsScreen(recommendation = uiState.recommendation)
         }
     }
 }
