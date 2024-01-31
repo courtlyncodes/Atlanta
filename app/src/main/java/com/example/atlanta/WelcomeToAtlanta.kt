@@ -9,12 +9,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.atlanta.data.AtlantaUiState
 import com.example.atlanta.data.Category
 import com.example.atlanta.ui.CategoryList
 import com.example.atlanta.ui.DetailsScreen
 import com.example.atlanta.ui.HomeScreen
 import com.example.atlanta.ui.RecommendationScreen
-import com.example.atlanta.ui.RecommendationViewModel
+import com.example.atlanta.ui.AtlantaViewModel
 import com.example.atlanta.utils.AtlantaContentType
 
 enum class AtlantaScreen/*(*//*@StringRes val title: Int*//*)*/ {
@@ -30,21 +31,26 @@ enum class AtlantaScreen/*(*//*@StringRes val title: Int*//*)*/ {
 @Composable
 fun AtlantaApp(
     windowSize: WindowWidthSizeClass,
-    viewModel: RecommendationViewModel = viewModel(),
+    viewModel: AtlantaViewModel = viewModel(),
     navController: NavHostController = rememberNavController()
 ) {
-    val contentType: AtlantaContentType
-    when(windowSize) {
-        WindowWidthSizeClass.Compact -> contentType = AtlantaContentType.ListOnly
-        WindowWidthSizeClass.Expanded -> contentType = AtlantaContentType.ListAndDetail
+    val contentType: AtlantaContentType = when(windowSize){
+        WindowWidthSizeClass.Compact -> { AtlantaContentType.ListOnly }
+        WindowWidthSizeClass.Expanded -> { AtlantaContentType.ListAndDetail }
+        else -> { AtlantaContentType.ListOnly }
     }
+    val uiState by viewModel.uiState.collectAsState()
 
     HomeScreen(
-        windowSize = ,
-        contentType = ,
-        onClick = ,
-        selectedCategory = ,
-        onCardClick =
+        windowSize = windowSize,
+        contentType = contentType,
+        onClick = { viewModel.updateCategory(it) },
+        selectedCategory = uiState.category,
+        onCardClick = {
+            if (it != null) {
+                viewModel.updateRecommendation(it)
+            }
+        }
     )
 
     NavHost(
