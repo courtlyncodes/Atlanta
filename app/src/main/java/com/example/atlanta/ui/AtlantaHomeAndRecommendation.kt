@@ -24,7 +24,7 @@ fun HomeAndRecommendationView(
     modifier: Modifier = Modifier
 ){
     Row {
-        HomeScreen(onClick = onClick)
+        CategoryList(onClick = onClick)
 //        Spacer(modifier = modifier.weight(1f))
         RecommendationScreen(selectedCategory = selectedCategory, onClick = onCardClick)
     }

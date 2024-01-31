@@ -1,5 +1,6 @@
 package com.example.atlanta
 
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -9,10 +10,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.atlanta.data.Category
+import com.example.atlanta.ui.CategoryList
 import com.example.atlanta.ui.DetailsScreen
 import com.example.atlanta.ui.HomeScreen
 import com.example.atlanta.ui.RecommendationScreen
 import com.example.atlanta.ui.RecommendationViewModel
+import com.example.atlanta.utils.AtlantaContentType
 
 enum class AtlantaScreen/*(*//*@StringRes val title: Int*//*)*/ {
     HOME/*(title = R.string.app_name)*/,
@@ -26,15 +29,30 @@ enum class AtlantaScreen/*(*//*@StringRes val title: Int*//*)*/ {
 
 @Composable
 fun AtlantaApp(
+    windowSize: WindowWidthSizeClass,
     viewModel: RecommendationViewModel = viewModel(),
     navController: NavHostController = rememberNavController()
 ) {
+    val contentType: AtlantaContentType
+    when(windowSize) {
+        WindowWidthSizeClass.Compact -> contentType = AtlantaContentType.ListOnly
+        WindowWidthSizeClass.Expanded -> contentType = AtlantaContentType.ListAndDetail
+    }
+
+    HomeScreen(
+        windowSize = ,
+        contentType = ,
+        onClick = ,
+        selectedCategory = ,
+        onCardClick =
+    )
+
     NavHost(
         navController = navController,
         startDestination = AtlantaScreen.HOME.name
     ) {
         composable(route = AtlantaScreen.HOME.name) {
-            HomeScreen(onClick = { category ->
+            CategoryList(onClick = { category ->
                 run {
                     when (category) {
                         Category.COFFEE -> navController.navigate(AtlantaScreen.COFFEE.name)

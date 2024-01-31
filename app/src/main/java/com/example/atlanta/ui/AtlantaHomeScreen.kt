@@ -15,6 +15,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -24,28 +25,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.atlanta.R
 import com.example.atlanta.data.Category
+import com.example.atlanta.data.Recommendation
 import com.example.atlanta.ui.theme.AtlantaTheme
-
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun HomeScreen(
-    onClick: (Category) -> Unit,
-    modifier: Modifier = Modifier
-) {
-//    Scaffold(topBar = {
-//        CenterAlignedTopAppBar(
-//            colors = TopAppBarDefaults.topAppBarColors(
-//                containerColor = Color.Black,
-//                titleContentColor = Color.Red
-//            ),
-//            title = { Text(stringResource(R.string.app_name)) })
-//    }) {
-        Column(/*modifier = Modifier.padding(it)*/) {
-            CategoryList(onClick = onClick /*navController = navController, selectedCategory = Category.COFFEE*/)
-        }
-    }
-//}
+import com.example.atlanta.utils.AtlantaContentType
 
 @Composable
 fun CategoryList(
@@ -121,11 +103,34 @@ fun CategoryList(
     }
 }
 
+@Composable
+fun HomeScreen(
+    windowSize: WindowWidthSizeClass,
+    contentType: AtlantaContentType,
+    onClick: (Category) -> Unit,
+    selectedCategory: Category,
+    onCardClick: (Recommendation?) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    if(contentType == AtlantaContentType.ListAndDetail)
+    {
+        HomeAndRecommendationView(
+            windowSize = windowSize,
+            onClick = onClick,
+            selectedCategory = selectedCategory,
+            onCardClick = onCardClick
+        )
+    } else {
+        CategoryList(onClick = onClick)
+    }
+}
+
+
 @Preview(showBackground = true)
 @Composable
 fun HomeScreenPreview() {
     AtlantaTheme {
         val onClick: (Category) -> Unit = {}
-        HomeScreen(onClick = onClick/*navController = navController*/)
+        CategoryList(onClick = onClick)
     }
 }
