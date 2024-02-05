@@ -6,11 +6,11 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
-import androidx.compose.material3.SheetValue
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
@@ -19,19 +19,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.atlanta.R
-import com.example.atlanta.data.AtlantaUiState
 import com.example.atlanta.data.Category
 import com.example.atlanta.data.Recommendation
-import com.example.atlanta.data.local.LocalRecommendationsDataProvider
 import com.example.atlanta.ui.theme.AtlantaTheme
-import com.example.atlanta.utils.AtlantaContentType
 
 @Composable
 fun CategoryList(
-//    viewModel: AtlantaViewModel = viewModel(),
-//    atlantaUiState: AtlantaUiState,
     onClick: (Category) -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -112,35 +106,27 @@ fun HomeAndRecommendationView(
     selectedCategory: Category,
     onCardClick: (Recommendation?) -> Unit,
     modifier: Modifier = Modifier
-){
-    Row {
-        CategoryList(onClick = onClick)
-//        Spacer(modifier = modifier.weight(1f))
-        RecommendationScreen(selectedCategory = selectedCategory, onClick = onCardClick)
+) {
+    Surface(modifier.fillMaxSize()) {
+        Row() {
+            CategoryList(onClick = onClick)
+            RecommendationScreen(selectedCategory = selectedCategory, onClick = onCardClick)
+        }
     }
 }
 
 @Composable
-fun HomeScreen(
-    windowSize: WindowWidthSizeClass,
-    onClick: (Category) -> Unit,
+fun RecommendationAndDetailsView(
+    onClick: (Recommendation?) -> Unit,
     selectedCategory: Category,
-    onCardClick: (Recommendation?) -> Unit,
+    recommendation: Recommendation?,
     modifier: Modifier = Modifier
 ) {
-    if(windowSize == WindowWidthSizeClass.Expanded)
-    {
-        HomeAndRecommendationView(
-            windowSize = windowSize,
-            onClick = onClick,
-            selectedCategory = selectedCategory,
-            onCardClick = onCardClick
-        )
-    } else {
-        CategoryList(onClick = onClick)
+    Row {
+        RecommendationScreen(selectedCategory = selectedCategory, onClick = onClick)
+        DetailsScreen(recommendation = recommendation)
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable

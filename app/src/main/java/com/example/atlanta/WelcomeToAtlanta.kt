@@ -1,5 +1,6 @@
 package com.example.atlanta
 
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -9,16 +10,17 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.atlanta.data.AtlantaUiState
 import com.example.atlanta.data.Category
+import com.example.atlanta.ui.AtlantaViewModel
 import com.example.atlanta.ui.CategoryList
 import com.example.atlanta.ui.DetailsScreen
-import com.example.atlanta.ui.HomeScreen
+import com.example.atlanta.ui.HomeAndRecommendationView
+import com.example.atlanta.ui.RecommendationAndDetailsView
 import com.example.atlanta.ui.RecommendationScreen
-import com.example.atlanta.ui.AtlantaViewModel
-import com.example.atlanta.utils.AtlantaContentType
 
 enum class AtlantaScreen/*(*//*@StringRes val title: Int*//*)*/ {
+    LIST_AND_RECOMMENDATIONS,
+    RECOMMENDATIONS_AND_DETAILS,
     HOME/*(title = R.string.app_name)*/,
     COFFEE/*(title = R.string.coffee)*/,
     DOG_PARK/*(title = R.string.dog_park)*/,
@@ -28,43 +30,47 @@ enum class AtlantaScreen/*(*//*@StringRes val title: Int*//*)*/ {
     DETAILS
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AtlantaApp(
     windowSize: WindowWidthSizeClass,
     viewModel: AtlantaViewModel = viewModel(),
     navController: NavHostController = rememberNavController()
 ) {
-    when(windowSize){
-        WindowWidthSizeClass.Compact -> { AtlantaContentType.ListOnly }
-        WindowWidthSizeClass.Expanded -> { AtlantaContentType.ListAndDetail }
-        else -> { AtlantaContentType.ListOnly }
-    }
     val uiState by viewModel.uiState.collectAsState()
-
-    HomeScreen(
-        windowSize = windowSize,
-        onClick = { viewModel.updateCategory(it) },
-        selectedCategory = uiState.category,
-        onCardClick = {
-            if (it != null) {
-                viewModel.updateRecommendation(it)
-            }
-        }
-    )
 
     NavHost(
         navController = navController,
-        startDestination = AtlantaScreen.HOME.name
+        startDestination = if (windowSize == WindowWidthSizeClass.Expanded) AtlantaScreen.LIST_AND_RECOMMENDATIONS.name else AtlantaScreen.HOME.name
     ) {
         composable(route = AtlantaScreen.HOME.name) {
             CategoryList(onClick = { category ->
                 run {
                     when (category) {
-                        Category.COFFEE -> navController.navigate(AtlantaScreen.COFFEE.name)
-                        Category.DOG_PARK -> navController.navigate(AtlantaScreen.DOG_PARK.name)
-                        Category.MUSEUM -> navController.navigate(AtlantaScreen.MUSEUM.name)
-                        Category.PIZZA -> navController.navigate(AtlantaScreen.PIZZA.name)
-                        Category.SHOPPING_CENTER -> navController.navigate(AtlantaScreen.SHOPPING_CENTER.name)
+                        Category.COFFEE -> {
+                            viewModel.updateCategory(Category.COFFEE)
+                            navController.navigate(AtlantaScreen.COFFEE.name)
+                        }
+
+                        Category.DOG_PARK -> {
+                            viewModel.updateCategory(Category.DOG_PARK)
+                            navController.navigate(AtlantaScreen.COFFEE.name)
+                        }
+
+                        Category.MUSEUM -> {
+                            viewModel.updateCategory(Category.MUSEUM)
+                            navController.navigate(AtlantaScreen.COFFEE.name)
+                        }
+
+                        Category.PIZZA -> {
+                            viewModel.updateCategory(Category.PIZZA)
+                            navController.navigate(AtlantaScreen.COFFEE.name)
+                        }
+
+                        Category.SHOPPING_CENTER -> {
+                            viewModel.updateCategory(Category.SHOPPING_CENTER)
+                            navController.navigate(AtlantaScreen.COFFEE.name)
+                        }
                     }
                 }
             })
@@ -114,8 +120,34 @@ fun AtlantaApp(
                     navController.navigate(AtlantaScreen.DETAILS.name)
                 })
         }
+
         composable(route = AtlantaScreen.DETAILS.name) {
             DetailsScreen(recommendation = uiState.recommendation)
         }
+        composable(route = AtlantaScreen.LIST_AND_RECOMMENDATIONS.name) {
+            HomeAndRecommendationView(
+                windowSize = windowSize,
+                onClick = { viewModel.updateCategory(it) },
+                selectedCategory = uiState.category,
+                onCardClick = {
+                    if (it != null) {
+                        viewModel.updateRecommendation(it)
+                    }
+                    navController.navigate(AtlantaScreen.RECOMMENDATIONS_AND_DETAILS.name)
+                }
+            )
+        }
+        composable(route = AtlantaScreen.RECOMMENDATIONS_AND_DETAILS.name) {
+            RecommendationAndDetailsView(
+                onClick = {
+                    if (it != null) {
+                        viewModel.updateRecommendation(it)
+                    }
+                },
+                selectedCategory = uiState.category,
+                recommendation = uiState.recommendation
+            )
+        }
     }
 }
+

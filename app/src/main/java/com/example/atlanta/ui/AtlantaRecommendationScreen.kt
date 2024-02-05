@@ -18,10 +18,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.atlanta.data.Category
 import com.example.atlanta.data.Recommendation
 import com.example.atlanta.data.local.LocalRecommendationsDataProvider
-import androidx.lifecycle.viewmodel.compose.viewModel
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -30,33 +30,25 @@ fun RecommendationScreen(
     viewModel: AtlantaViewModel = viewModel(),
     selectedCategory: Category,
     onClick: (Recommendation?) -> Unit,
-//    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier
 ) {
     val filteredRecommendations =
         LocalRecommendationsDataProvider.allRecommendations.filter { it.category == selectedCategory }
-//    Scaffold(topBar =
-//    {
-//        CenterAlignedTopAppBar(title = {
-//            Text(stringResource(LocalRecommendationsDataProvider.allRecommendations.first { it.category == selectedCategory }.categoryName))
-//        })
-//    }
-//    ) {
-        LazyColumn(/*modifier = Modifier.padding(it)*/) {
-            items(filteredRecommendations) { recommendation ->
-                RecommendationCard(
-                    recommendation = recommendation,
-                    onClick = onClick,
-//                    viewModel = viewModel
-                    onViewModelClick = { viewModel.updateRecommendation(recommendation) }
-                )
-            }
+
+    LazyColumn {
+        items(filteredRecommendations) { recommendation ->
+            RecommendationCard(
+                recommendation = recommendation,
+                onClick = onClick,
+                onViewModelClick = { viewModel.updateRecommendation(recommendation) }
+            )
         }
     }
-//}
+}
+
 
 @Composable
 fun RecommendationCard(
-//    viewModel: RecommendationViewModel,
     onViewModelClick: (Recommendation?) -> Unit,
     recommendation: Recommendation,
     onClick: (Recommendation?) -> Unit,
@@ -64,7 +56,6 @@ fun RecommendationCard(
 ) {
 
     Card(modifier = Modifier.clickable {
-//        viewModel.updateRecommendation(recommendation)
         onViewModelClick(recommendation)
         onClick(recommendation)
     }
