@@ -1,6 +1,5 @@
 package com.example.atlanta.data
 
-import com.example.atlanta.data.local.LocalRecommendationsDataProvider
 
 data class AtlantaUiState(
     val category: Category = Category.COFFEE,

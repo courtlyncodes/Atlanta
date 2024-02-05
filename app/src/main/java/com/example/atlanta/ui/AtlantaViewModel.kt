@@ -15,7 +15,7 @@ class AtlantaViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(AtlantaUiState())
     val uiState: StateFlow<AtlantaUiState> = _uiState.asStateFlow()
 
-    fun updateRecommendation(selectedRecommendation: Recommendation) {
+    fun updateRecommendation(selectedRecommendation: Recommendation?) {
         _uiState.update { currentState ->
             currentState.copy(recommendation = selectedRecommendation)
         }

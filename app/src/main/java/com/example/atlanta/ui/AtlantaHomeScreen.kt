@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -101,38 +100,41 @@ fun CategoryList(
 
 @Composable
 fun HomeAndRecommendationView(
-    windowSize: WindowWidthSizeClass,
     onClick: (Category) -> Unit,
     selectedCategory: Category,
+    recommendation: Recommendation? = null,
     onCardClick: (Recommendation?) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Surface(modifier.fillMaxSize()) {
         Row() {
             CategoryList(onClick = onClick)
-            RecommendationScreen(selectedCategory = selectedCategory, onClick = onCardClick)
+            if (recommendation != null) {
+                DetailsScreen(recommendation = recommendation)
+            } else {
+                RecommendationScreen(selectedCategory = selectedCategory, onClick = onCardClick)
+            }
         }
     }
-}
 
-@Composable
-fun RecommendationAndDetailsView(
-    onClick: (Recommendation?) -> Unit,
-    selectedCategory: Category,
-    recommendation: Recommendation?,
-    modifier: Modifier = Modifier
-) {
-    Row {
-        RecommendationScreen(selectedCategory = selectedCategory, onClick = onClick)
-        DetailsScreen(recommendation = recommendation)
-    }
+//    @Composable
+//    fun RecommendationAndDetailsView(
+//        onClick: (Recommendation?) -> Unit,
+//        selectedCategory: Category,
+//        recommendation: Recommendation?,
+//        modifier: Modifier = Modifier
+//    ) {
+//        Row {
+//            RecommendationScreen(selectedCategory = selectedCategory, onClick = onClick)
+//            DetailsScreen(recommendation = recommendation)
+//        }
+//    }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun HomeScreenPreview() {
-    AtlantaTheme {
-        val onClick: (Category) -> Unit = {}
-        CategoryList(onClick = onClick)
+    @Preview(showBackground = true)
+    @Composable
+    fun HomeScreenPreview() {
+        AtlantaTheme {
+            val onClick: (Category) -> Unit = {}
+            CategoryList(onClick = onClick)
+        }
     }
-}
