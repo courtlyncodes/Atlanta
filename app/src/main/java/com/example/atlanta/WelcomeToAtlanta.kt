@@ -1,7 +1,12 @@
 package com.example.atlanta
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.twotone.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -12,10 +17,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.atlanta.data.Category
 import com.example.atlanta.ui.AtlantaViewModel
@@ -24,18 +31,18 @@ import com.example.atlanta.ui.DetailsScreen
 import com.example.atlanta.ui.HomeAndRecommendationView
 import com.example.atlanta.ui.RecommendationScreen
 
-enum class AtlantaScreen/*(*//*@StringRes val title: Int*//*)*/ {
-    LIST_AND_RECOMMENDATIONS,
-    HOME/*(title = R.string.app_name)*/,
-    COFFEE/*(title = R.string.coffee)*/,
-    DOG_PARK/*(title = R.string.dog_park)*/,
-    MUSEUM/*(title = R.string.museum)*/,
-    PIZZA/*(title = R.string.pizza)*/,
-    SHOPPING_CENTER/*(title = R.string.shopping)*/,
-    DETAILS
+
+enum class AtlantaScreen(@StringRes val title: Int) {
+    LIST_AND_RECOMMENDATIONS(title = R.string.coffee),
+    HOME(title = R.string.app_name),
+    COFFEE(title = R.string.coffee),
+    DOG_PARK(title = R.string.dog_park),
+    MUSEUM(title = R.string.museum),
+    PIZZA(title = R.string.pizza),
+    SHOPPING_CENTER(title = R.string.shopping),
+    DETAILS(title = R.string.more_info)
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AtlantaApp(
     windowSize: WindowWidthSizeClass,
@@ -43,16 +50,17 @@ fun AtlantaApp(
     navController: NavHostController = rememberNavController()
 ) {
     val uiState by viewModel.uiState.collectAsState()
+    val backStackEntry by navController.currentBackStackEntryAsState()
+    val currentScreen = AtlantaScreen.valueOf(
+        backStackEntry?.destination?.route ?: AtlantaScreen.HOME.name
+    )
+
     Scaffold(
         topBar = {
-            TopAppBar(
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color.Black,
-                    titleContentColor = Color.Red
-                ),
-                title = {
-                    Text("Welcome to Atlanta")
-                }
+            AtlantaAppBar(
+                currentScreen = currentScreen,
+                canNavigateBack = navController.previousBackStackEntry != null,
+                navigateUp = { navController.navigateUp() }
             )
         }
     ) { it ->
@@ -160,4 +168,32 @@ fun AtlantaApp(
 
         }
     }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun AtlantaAppBar(
+    currentScreen: AtlantaScreen,
+    canNavigateBack: Boolean,
+    navigateUp: () -> Unit = {},
+    modifier: Modifier = Modifier
+) {
+    TopAppBar(
+        title = { Text(stringResource(currentScreen.title)) },
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = Color.Black,
+            titleContentColor = Color.Red
+        ),
+        modifier = modifier,
+        navigationIcon = {
+            if (canNavigateBack) {
+                IconButton(onClick = navigateUp) {
+                    Icon(
+                        imageVector = Icons.TwoTone.ArrowBack,
+                        contentDescription = "back"
+                    )
+                }
+            }
+        }
+    )
 }

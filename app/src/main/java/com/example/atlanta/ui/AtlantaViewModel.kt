@@ -1,6 +1,10 @@
 package com.example.atlanta.ui
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.atlanta.AtlantaScreen
+import com.example.atlanta.R
 import com.example.atlanta.data.AtlantaUiState
 import com.example.atlanta.data.Category
 import com.example.atlanta.data.Recommendation
@@ -15,6 +19,10 @@ class AtlantaViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(AtlantaUiState())
     val uiState: StateFlow<AtlantaUiState> = _uiState.asStateFlow()
 
+    private val _currentScreenTitle = MutableLiveData<Int>()
+    val currentScreenTitle: LiveData<Int>
+        get() = _currentScreenTitle
+
     fun updateRecommendation(selectedRecommendation: Recommendation?) {
         _uiState.update { currentState ->
             currentState.copy(recommendation = selectedRecommendation)
@@ -26,5 +34,18 @@ class AtlantaViewModel : ViewModel() {
             currentState.copy(category = selectedCategory)
         }
     }
-}
+
+/*    fun setScreen(screen: AtlantaScreen){
+        when (screen) {
+            AtlantaScreen.LIST_AND_RECOMMENDATIONS -> _currentScreenTitle.value = R.string.app_name
+            AtlantaScreen.LIST_AND_RECOMMENDATIONS -> _currentScreenTitle.value = R.string.app_name
+            AtlantaScreen.LIST_AND_RECOMMENDATIONS -> _currentScreenTitle.value = R.string.app_name
+            AtlantaScreen.LIST_AND_RECOMMENDATIONS -> _currentScreenTitle.value = R.string.app_name
+            AtlantaScreen.LIST_AND_RECOMMENDATIONS -> _currentScreenTitle.value = R.string.app_name
+            AtlantaScreen.LIST_AND_RECOMMENDATIONS -> _currentScreenTitle.value = R.string.app_name
+            AtlantaScreen.LIST_AND_RECOMMENDATIONS -> _currentScreenTitle.value = R.string.app_name
+            AtlantaScreen.LIST_AND_RECOMMENDATIONS -> _currentScreenTitle.value = R.string.app_name*/
+
+
+        }
 
