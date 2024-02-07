@@ -34,6 +34,8 @@ import com.example.atlanta.ui.theme.AtlantaTheme
 import androidx.compose.material3.PermanentNavigationDrawer
 import androidx.compose.ui.res.stringResource
 
+typealias CategoryClickListener = (Category) -> Unit
+
 @Composable
 fun CategoryList(
     onClick: (Category) -> Unit,
@@ -111,10 +113,11 @@ fun CategoryList(
 
 @Composable
 fun HomeAndRecommendationView(
-    onClick: (Category) -> Unit,
-    selectedCategory: Category,
+    onClick: CategoryClickListener,
+    selectedCategory: mutableStateOf<Category>,
     recommendation: Recommendation? = null,
     onCardClick: (Recommendation?) -> Unit,
+
     modifier: Modifier = Modifier
 ) {
     PermanentNavigationDrawer(
@@ -125,34 +128,33 @@ fun HomeAndRecommendationView(
                     icon = { R.drawable.coffee_icon },
                     label = { Text(stringResource(R.string.coffee)) },
                     selected = false,
-                    onClick = { Category.COFFEE }
-                )
+                    onClick =  { selectedCategory = Category.COFFEE } )
                 NavigationDrawerItem(
                     icon = {R.drawable.dog_icon},
                     label = { Text(stringResource(R.string.dog_park)) },
                     selected = false,
-                    onClick = { Category.DOG_PARK })
+                    onClick = { onClick })
                 NavigationDrawerItem(
                     icon = {R.drawable.museum_icon},
                     label = { Text(stringResource(R.string.museum)) },
                     selected = false,
-                    onClick = { Category.MUSEUM })
+                    onClick = { onClick })
                 NavigationDrawerItem(
                     icon = {R.drawable.pizza_icon},
                     label = { Text(stringResource(R.string.pizza)) },
                     selected = false,
-                    onClick = { Category.PIZZA })
+                    onClick = { onClick })
                 NavigationDrawerItem(
                     icon = {R.drawable.mall_icon},
                     label = { Text(stringResource(R.string.shopping)) },
                     selected = false,
-                    onClick = { Category.SHOPPING_CENTER })
+                    onClick = { onClick })
             }
         },
 content =
 {
-    Row() {
-        CategoryList(onClick = onClick)
+//    Row() {
+//        CategoryList(onClick = onClick)
         if (recommendation != null) {
             DetailsScreen(recommendation = recommendation)
         } else {
@@ -160,10 +162,11 @@ content =
                 selectedCategory = selectedCategory,
                 onClick = onCardClick
             )
-        }
+//        }
     }
 })
     }
+
 @Preview(showBackground = true)
 @Composable
 fun HomeScreenPreview() {
