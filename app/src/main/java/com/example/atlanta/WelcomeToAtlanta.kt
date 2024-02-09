@@ -152,6 +152,7 @@ fun AtlantaApp(
             }
             composable(route = AtlantaScreen.LIST_AND_RECOMMENDATIONS.name) {
                 HomeAndRecommendationView(
+                    atlantaUiState = uiState,
                     onClick = {
                         viewModel.updateCategory(it)
                         viewModel.updateRecommendation(null)
