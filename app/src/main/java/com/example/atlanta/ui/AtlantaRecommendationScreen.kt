@@ -44,7 +44,6 @@ fun RecommendationScreen(
     }
 }
 
-
 @Composable
 fun RecommendationCard(
     onViewModelClick: (Recommendation?) -> Unit,

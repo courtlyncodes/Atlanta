@@ -1,6 +1,5 @@
 package com.example.atlanta.data
 
-
 data class AtlantaUiState(
     val category: Category = Category.COFFEE,
     val recommendation: Recommendation? = null,
