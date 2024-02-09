@@ -11,32 +11,19 @@ import kotlinx.coroutines.flow.update
 
 
 class AtlantaViewModel : ViewModel() {
-    private val _recommendation = MutableStateFlow<Recommendation?>(null)
-    val recommendation: StateFlow<Recommendation?> = _recommendation.asStateFlow()
-//
-    private val _uiState = MutableStateFlow(AtlantaUiState(Category.COFFEE))
+
+    private val _uiState = MutableStateFlow(AtlantaUiState())
     val uiState: StateFlow<AtlantaUiState> = _uiState.asStateFlow()
 
-//init block after declaring variable
-//    init {
-//
-//    }
-    fun updateRecommendation(selectedRecommendation: Recommendation) {
-        _recommendation.value = selectedRecommendation
+    fun updateRecommendation(selectedRecommendation: Recommendation?) {
+        _uiState.update { currentState ->
+            currentState.copy(recommendation = selectedRecommendation)
+        }
     }
 
     fun updateCategory(selectedCategory: Category) {
-        _uiState.update {currentState ->
+        _uiState.update { currentState ->
             currentState.copy(category = selectedCategory)
         }
     }
-
-    fun updateRecommendations(selectedRecommendations: List<Recommendation>) {
-        _uiState.update {currentState ->
-            currentState.copy(recommendations = selectedRecommendations)
-        }
-    }
-    }
-//    fun updateCategory(selectedCategory: Category){
-//        _category.value = selectedCategory
-//    }
+}
