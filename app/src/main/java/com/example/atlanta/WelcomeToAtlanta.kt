@@ -18,6 +18,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -29,7 +30,7 @@ import com.example.atlanta.ui.AtlantaViewModel
 import com.example.atlanta.ui.CategoryList
 import com.example.atlanta.ui.DetailsScreen
 import com.example.atlanta.ui.HomeAndRecommendationView
-import com.example.atlanta.ui.RecommendationScreen
+import com.example.atlanta.ui.RecommendationList
 
 
 enum class AtlantaScreen(@StringRes val title: Int) {
@@ -102,7 +103,7 @@ fun AtlantaApp(
                 })
             }
             composable(route = AtlantaScreen.COFFEE.name) {
-                RecommendationScreen(selectedCategory = Category.COFFEE,
+                RecommendationList(selectedCategory = Category.COFFEE,
                     onClick = {
                         if (it != null) {
                             viewModel.updateRecommendation(it)
@@ -111,7 +112,7 @@ fun AtlantaApp(
                     })
             }
             composable(route = AtlantaScreen.DOG_PARK.name) {
-                RecommendationScreen(selectedCategory = Category.DOG_PARK,
+                RecommendationList(selectedCategory = Category.DOG_PARK,
                     onClick = {
                         if (it != null) {
                             viewModel.updateRecommendation(it)
@@ -120,7 +121,7 @@ fun AtlantaApp(
                     })
             }
             composable(route = AtlantaScreen.MUSEUM.name) {
-                RecommendationScreen(selectedCategory = Category.MUSEUM,
+                RecommendationList(selectedCategory = Category.MUSEUM,
                     onClick = {
                         if (it != null) {
                             viewModel.updateRecommendation(it)
@@ -129,7 +130,7 @@ fun AtlantaApp(
                     })
             }
             composable(route = AtlantaScreen.PIZZA.name) {
-                RecommendationScreen(selectedCategory = Category.PIZZA,
+                RecommendationList(selectedCategory = Category.PIZZA,
                     onClick = {
                         if (it != null) {
                             viewModel.updateRecommendation(it)
@@ -138,7 +139,7 @@ fun AtlantaApp(
                     })
             }
             composable(route = AtlantaScreen.SHOPPING_CENTER.name) {
-                RecommendationScreen(selectedCategory = Category.SHOPPING_CENTER,
+                RecommendationList(selectedCategory = Category.SHOPPING_CENTER,
                     onClick = {
                         if (it != null) {
                             viewModel.updateRecommendation(it)
@@ -152,7 +153,6 @@ fun AtlantaApp(
             }
             composable(route = AtlantaScreen.LIST_AND_RECOMMENDATIONS.name) {
                 HomeAndRecommendationView(
-                    atlantaUiState = uiState,
                     onClick = {
                         viewModel.updateCategory(it)
                         viewModel.updateRecommendation(null)
@@ -185,13 +185,14 @@ fun AtlantaAppBar(
             containerColor = Color.Black,
             titleContentColor = Color.Red
         ),
-        modifier = modifier,
+        modifier = modifier.padding(bottom = 5.dp),
         navigationIcon = {
             if (canNavigateBack) {
                 IconButton(onClick = navigateUp) {
                     Icon(
                         imageVector = Icons.TwoTone.ArrowBack,
-                        contentDescription = "back"
+                        contentDescription = "back",
+                        tint = Color.Red
                     )
                 }
             }
