@@ -15,9 +15,9 @@ The Atlanta App is designed to help users explore recommended places to visit in
 ### Installation
 1. Clone the Repository: Open your terminal and execute: ```git clone https://github.com/your-username/atlanta-app.git```
 2. Open in Android Studio:
-- Open Android Studio.
-- Select 'Open an existing Android Studio project'.
-- Navigate to the cloned repository folder and select it.
+  - Open Android Studio.
+  - Select 'Open an existing Android Studio project'.
+  - Navigate to the cloned repository folder and select it.
 3. Build the project:
 - Click on 'Build' in the top menu.
 - Select 'Make Project' to build the app.
