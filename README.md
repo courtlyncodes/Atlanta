@@ -13,7 +13,7 @@ The Atlanta App is designed to help users explore recommended places to visit in
 - MVVM Architecture: Utilizes the Model-View-ViewModel (MVVM) architecture for a clear separation of concerns and easier maintenance.
   
 ### Installation
-1. Clone the Repository: Open your terminal and execute: ```git clone https://github.com/your-username/atlanta-app.git```
+1. Clone the Repository: Open your terminal and execute: ```git clone https://github.com/courtlyncodes/Atlanta.git```
 2. Open in Android Studio:
   - Open Android Studio.
   - Select 'Open an existing Android Studio project'.
