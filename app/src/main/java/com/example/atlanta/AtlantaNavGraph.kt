@@ -1,12 +1,15 @@
 package com.example.atlanta
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.twotone.ArrowBack
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -18,6 +21,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -179,11 +183,13 @@ fun AtlantaAppBar(
     navigateUp: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
+    Column {
     TopAppBar(
         title = { Text(stringResource(currentScreen.title)) },
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = Color.Black,
-            titleContentColor = Color.Red
+            containerColor = Color.White,
+            scrolledContainerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.95f),
+                    titleContentColor = Color.Black
         ),
         modifier = modifier,
         navigationIcon = {
@@ -191,10 +197,12 @@ fun AtlantaAppBar(
                 IconButton(onClick = navigateUp) {
                     Icon(
                         imageVector = Icons.TwoTone.ArrowBack,
+                        tint = Color.Red,
                         contentDescription = "back"
                     )
                 }
             }
         }
     )
-}
+    Divider(color = Color.Gray, thickness = 1.dp)
+}}

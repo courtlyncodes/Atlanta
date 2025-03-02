@@ -3,7 +3,7 @@
     <string name="more_info">More Information</string>
 
     <!--  Categories  -->
-    <string name="coffee">Coffee</string>
+    <string name="coffee">Coffee Shops</string>
     <string name="dog_park">Dog Parks</string>
     <string name="museum">Museums</string>
     <string name="pizza">Pizza Restaurants</string>
@@ -104,5 +104,10 @@
 
     <string name="ponce">Ponce City Market</string>
     <string name="ponce_description">Atlanta\'s Ponce City Market is a vibrant bazaar where historic brick dances with modern vibes and every corner brims with retail alchemy. In Old Fourth Ward\'s trendy embrace, meander through bustling vendor halls under neon signs, the aroma of artisanal coffee mingling with laughter and the clatter of vintage finds. Dive into a treasure trove at West Elm and J.Crew, then ascend to bohemian heaven in Anthropologie\'s curated kingdom. Catch the latest trends at Citizen Supply and JJ\'s Flower Shop, followed by a culinary escape at the Ponce City Market Food Hall. Each stall explodes with possibility, a shopper\'s haven where local makers meet national brands, all woven together by the city\'s creative pulse. So grab your reusable bag, find your perfect Ponce City Market, and let the retail adventure become your soundtrack – every purchase infused with a taste of Atlanta\'s eclectic spirit.</string>
+    <string name="coffee_icon">coffee icon</string>
+    <string name="dog_icon">dog icon</string>
+    <string name="museum_icon">museum icon</string>
+    <string name="shopping_icon">shopping icon</string>
+    <string name="pizza_icon">pizza icon</string>
 
 </resources>
